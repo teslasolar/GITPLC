@@ -19,8 +19,10 @@ function renderAlarms(el){
   el.innerHTML='<h3 style="color:var(--er);font-size:10px">🚨 Alarm Management (ISA-18.2)</h3>';
   if(a.priorities)a.priorities.forEach(function(p){
     el.innerHTML+='<div class="alarm-row"><span class="p'+p.level+'" style="font-weight:700">P'+p.level+'</span><span>'+p.name+'</span><span style="color:var(--t2)">'+p.response+'</span><span style="color:var(--t2)">&lt;'+p.time+'</span></div>'});
-  var s=getUDT('alarms/states.json');
-  if(s&&s.states)el.innerHTML+='<div style="margin-top:8px">'+s.states.map(function(st){return '<span class="sm-state">'+st.name+'</span>'}).join('<span class="sm-arrow">→</span>')+'</div>';
+  // Live alarms from GitHub Issues
+  el.innerHTML+='<div style="margin-top:8px;font-size:9px;color:var(--er)">Live Alarms (GitHub Issues):</div><div id="live-alarms"></div>';
+  if(typeof renderAlarmPanel==='function')renderAlarmPanel(document.getElementById('live-alarms'));
+  el.innerHTML+='<div style="margin-top:6px;font-size:7px;color:var(--t2)">💬 Comment on issue = active instance · Close issue = alarm cleared</div>';
 }
 
 function renderKPIs(el){

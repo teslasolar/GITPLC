@@ -1,24 +1,27 @@
-// app.js — boot: load UDTs → scan dirs → build tree → load templates
+// app.js — boot: UDTs → alarms → tree → overview (PLC running)
 (async function(){
   var status=document.getElementById('status');
   status.textContent='loading...';
 
   var count=await loadUDTs();
+  await fetchAlarms();
 
-  // Scan + build nav tree
+  // Alarm summary in header
+  var alarmSum=document.getElementById('alarm-summary');
+  if(alarmSum&&ALARMS.items.length){
+    var c=[0,0,0,0,0];ALARMS.items.forEach(function(a){c[a.priority]++});
+    alarmSum.innerHTML=[1,2,3,4].filter(function(p){return c[p]}).map(function(p){
+      return '<span style="color:'+PRI_COLOR[p]+'">'+PRI_ICON[p]+c[p]+'</span>'}).join(' ');
+  }
+
+  // Nav tree
   var dirs=await scanDirs();
   renderDirNav(dirs,document.getElementById('tree-panel'));
 
-  // Stats
+  // Footer stats
   var tags=Object.keys(PLC_TAGS.tags).length;
-  document.getElementById('stats').textContent=count+' UDTs · '+tags+' tags';
-  status.textContent='✔ '+count;
+  document.getElementById('ftr-stats').textContent=count+' UDTs · '+tags+' tags · '+ALARMS.items.length+' alarms';
+  status.textContent='● RUN';
 
-  // Load enterprise hierarchy templates
-  await loadAllTemplates();
-
-  // Default view
-  switchView('explorer');
-  var first=Object.keys(getAllUDTs())[0];
-  if(first)selectUDT(first);
+  switchView('overview');
 })();

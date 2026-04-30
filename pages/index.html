@@ -2,21 +2,26 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🔧 GitPLC — Universal PLC Namespace</title>
+<title>🔧 GitPLC — Live</title>
 <link rel="stylesheet" href="ui/style.css">
 </head>
 <body>
 <div class="hdr">
   <span class="logo">🔧 GitPLC</span>
   <span class="b">│</span>
-  <span class="tab active" data-tab="explorer" onclick="switchView('explorer')">📂</span>
+  <span id="plc-state" style="color:#42e898;font-size:8px">● RUN</span>
+  <span class="b">│</span>
+  <span id="alarm-summary" style="font-size:8px"></span>
+  <span style="flex:1"></span>
+  <span class="tab active" data-tab="overview" onclick="switchView('overview')">🏠</span>
+  <span class="tab" data-tab="explorer" onclick="switchView('explorer')">📂</span>
   <span class="tab" data-tab="programs" onclick="switchView('programs')">⚙</span>
   <span class="tab" data-tab="alarms" onclick="switchView('alarms')">🚨</span>
   <span class="tab" data-tab="kpi" onclick="switchView('kpi')">📊</span>
   <span class="tab" data-tab="tags" onclick="switchView('tags')">🏷</span>
   <span class="tab" data-tab="stats" onclick="switchView('stats')">📡</span>
-  <span style="flex:1"></span>
-  <span id="status" class="ok">loading...</span>
+  <span class="b">│</span>
+  <span id="status" class="ok">boot...</span>
 </div>
 <div class="dock">
   <div class="side" id="tree-panel"></div>
@@ -26,24 +31,18 @@
 <div class="ftr">
   <span>🔧 GitPLC · ISA-88/95 · PackML · OPC-UA · MQTT · Modbus</span>
   <span style="flex:1"></span>
-  <span id="stats"></span>
+  <span id="ftr-stats"></span>
 </div>
-
-<!-- loaders -->
+<script src="assets/plc-svg.js"></script>
+<script src="assets/gen-badge.js"></script>
 <script src="loaders/template-loader.js"></script>
 <script src="loaders/subdir-scanner.js"></script>
-
-<!-- engine -->
 <script src="engine/tag-db.js"></script>
 <script src="engine/udt-loader.js"></script>
 <script src="engine/tree.js"></script>
 <script src="engine/repo-monitor.js"></script>
-<script src="assets/gen-badge.js"></script>
-
-<!-- ui -->
+<script src="engine/alarm-monitor.js"></script>
 <script src="ui/views.js"></script>
 <script src="ui/detail.js"></script>
-
-<!-- boot -->
 <script src="app.js"></script>
 </body></html>
