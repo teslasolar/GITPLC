@@ -1,0 +1,39 @@
+{
+  "_udt": "Codesys_POU",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "codesys",
+  "desc": "IEC 61131-3 Program Organization Unit",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "pou_type": {
+      "type": "ENUM",
+      "values": [
+        "PROGRAM",
+        "FUNCTION_BLOCK",
+        "FUNCTION"
+      ]
+    },
+    "language": {
+      "type": "ENUM",
+      "values": [
+        "ST",
+        "LD",
+        "FBD",
+        "SFC",
+        "IL",
+        "CFC"
+      ]
+    },
+    "var_input": {
+      "type": "ARRAY OF Field"
+    },
+    "var_output": {
+      "type": "ARRAY OF Field"
+    },
+    "var_local": {
+      "type": "ARRAY OF Field"
+    }
+  }
+}
