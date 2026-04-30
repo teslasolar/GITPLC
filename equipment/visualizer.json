@@ -1,0 +1,34 @@
+{
+  "_udt": "Konomioke_Visualizer",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 13,
+  "desc": "127D vagal orb, per-singer particles, coherence visuals",
+  "fields": {
+    "mode": {
+      "type": "ENUM",
+      "values": [
+        "ORB",
+        "PARTICLES",
+        "WAVEFORM",
+        "SPECTRUM"
+      ]
+    },
+    "orb_radius": {
+      "type": "REAL"
+    },
+    "orb_color": {
+      "type": "STRING"
+    },
+    "particle_count": {
+      "type": "INT"
+    },
+    "fps": {
+      "type": "REAL"
+    },
+    "bloom_intensity": {
+      "type": "REAL",
+      "eng_lo": 0,
+      "eng_hi": 1
+    }
+  }
+}
