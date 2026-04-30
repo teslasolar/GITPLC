@@ -1,0 +1,21 @@
+{
+  "_udt": "Rockwell_DataTypes",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "rockwell",
+  "type_map": {
+    "BOOL": "BOOL",
+    "SINT": "SINT",
+    "INT": "INT",
+    "DINT": "DINT",
+    "LINT": "LINT",
+    "REAL": "REAL",
+    "LREAL": "LREAL",
+    "STRING": "STRING",
+    "TIMER": "TIMER",
+    "COUNTER": "COUNTER",
+    "CONTROL": "CONTROL",
+    "PID": "PID",
+    "MESSAGE": "MESSAGE",
+    "AXIS": "MOTION_INSTRUCTION"
+  }
+}
