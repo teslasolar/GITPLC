@@ -1,0 +1,43 @@
+{
+  "_udt": "Konomioke_Alarms",
+  "_schema": "gitplc/alarms/v1",
+  "site": "konomioke",
+  "alarms": [
+    {
+      "id": "MESH_DISCONNECT",
+      "priority": 2,
+      "desc": "Peer disconnected unexpectedly",
+      "trigger": "peer_count < expected"
+    },
+    {
+      "id": "AUDIO_CLIP",
+      "priority": 3,
+      "desc": "Audio clipping detected",
+      "trigger": "volume_db > -1"
+    },
+    {
+      "id": "LATENCY_HIGH",
+      "priority": 3,
+      "desc": "Stream latency > 200ms",
+      "trigger": "latency_ms > 200"
+    },
+    {
+      "id": "COHERENCE_LOW",
+      "priority": 4,
+      "desc": "Room coherence dropped below threshold",
+      "trigger": "coherence < 0.3"
+    },
+    {
+      "id": "TRACK_STALL",
+      "priority": 2,
+      "desc": "Track playback stalled",
+      "trigger": "position_ms unchanged for 5s"
+    },
+    {
+      "id": "VAGAL_CRISIS",
+      "priority": 1,
+      "desc": "Dorsal vagal shutdown detected in singer",
+      "trigger": "vagal_branch==dorsal && coherence<0.1"
+    }
+  ]
+}
