@@ -1,0 +1,37 @@
+{
+  "_udt": "Konomioke_Room",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 2,
+  "desc": "P2P karaoke room — the mesh IS the plant floor",
+  "fields": {
+    "room_id": {
+      "type": "STRING",
+      "desc": "Room hash"
+    },
+    "host_peer": {
+      "type": "STRING",
+      "desc": "Host Ed25519 pubkey"
+    },
+    "peer_count": {
+      "type": "INT",
+      "desc": "Connected peers"
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "IDLE",
+        "LOBBY",
+        "SINGING",
+        "PAUSED",
+        "ENDED"
+      ]
+    },
+    "track": {
+      "type": "STRING",
+      "desc": "Current track ID"
+    },
+    "created": {
+      "type": "TIME"
+    }
+  }
+}
