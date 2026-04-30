@@ -1,0 +1,59 @@
+{
+  "_udt": "Program_BloomLoop",
+  "_schema": "gitplc/program/v1",
+  "site": "konomioke",
+  "desc": "7-prime bloom loop — sample voice → gate phoneme → update ring",
+  "primes": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17
+  ],
+  "loops": [
+    {
+      "prime": 2,
+      "name": "L_identity",
+      "input": "peer_keypair",
+      "output": "room_membership"
+    },
+    {
+      "prime": 3,
+      "name": "L_mesh",
+      "input": "webrtc_signal",
+      "output": "peer_connection"
+    },
+    {
+      "prime": 5,
+      "name": "L_fabric",
+      "input": "audio_pcm",
+      "output": "vagal_state"
+    },
+    {
+      "prime": 7,
+      "name": "L_vocal",
+      "input": "pitch_data",
+      "output": "harmony_mix"
+    },
+    {
+      "prime": 11,
+      "name": "L_track",
+      "input": "lrc_sync",
+      "output": "lyrics_position"
+    },
+    {
+      "prime": 13,
+      "name": "L_visual",
+      "input": "bloom_state",
+      "output": "render_frame"
+    },
+    {
+      "prime": 17,
+      "name": "L_boot",
+      "input": "config",
+      "output": "app_ready"
+    }
+  ]
+}
