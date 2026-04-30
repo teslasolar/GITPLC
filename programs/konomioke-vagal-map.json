@@ -1,0 +1,58 @@
+{
+  "_udt": "Program_VagalPhonemeMap",
+  "_schema": "gitplc/program/v1",
+  "site": "konomioke",
+  "desc": "Phoneme → vagal branch mapping for therapeutic scoring",
+  "mappings": [
+    {
+      "phonemes": [
+        "m",
+        "n",
+        "ng"
+      ],
+      "branch": "ventral",
+      "weight": 0.9,
+      "desc": "Nasal hum — strong ventral vagal"
+    },
+    {
+      "phonemes": [
+        "ah",
+        "oh",
+        "oo"
+      ],
+      "branch": "ventral",
+      "weight": 0.7,
+      "desc": "Open vowels — vagal tone"
+    },
+    {
+      "phonemes": [
+        "s",
+        "sh",
+        "f"
+      ],
+      "branch": "sympathetic",
+      "weight": 0.4,
+      "desc": "Fricatives — mild activation"
+    },
+    {
+      "phonemes": [
+        "k",
+        "t",
+        "p"
+      ],
+      "branch": "sympathetic",
+      "weight": 0.6,
+      "desc": "Plosives — sharp activation"
+    },
+    {
+      "phonemes": [
+        "th",
+        "v",
+        "z"
+      ],
+      "branch": "dorsal",
+      "weight": 0.3,
+      "desc": "Voiced fricatives — grounding"
+    }
+  ]
+}
