@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" data-type="motor" data-bind="state" data-states="Running,Stopped,Faulted">
+  <circle cx="22" cy="22" r="18" fill="none" stroke="var(--color,#2a3550)" stroke-width="2"/>
+  <circle cx="22" cy="22" r="14" fill="none" stroke="var(--color,#2a3550)" stroke-width="1" opacity=".3"/>
+  <text x="22" y="26" fill="var(--color,#2a3550)" font-size="14" font-family="monospace" text-anchor="middle" font-weight="600">M</text>
+</svg>

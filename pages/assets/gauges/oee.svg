@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" data-type="gauge" data-bind="oee" data-max="100" data-unit="%" data-color="#42e898">
+  <defs><filter id="g"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <circle cx="45" cy="45" r="34" fill="none" stroke="#1a2235" stroke-width="5"/>
+  <circle cx="45" cy="45" r="34" fill="none" stroke="#42e898" stroke-width="5" stroke-dasharray="186 214" stroke-linecap="round" transform="rotate(-90 45 45)" filter="url(#g)"/>
+  <text x="45" y="42" fill="#42e898" font-size="16" font-family="monospace" text-anchor="middle" font-weight="700" data-field="value">87</text>
+  <text x="45" y="54" fill="#4a5a78" font-size="8" font-family="monospace" text-anchor="middle">%</text>
+  <text x="45" y="80" fill="#4a5a78" font-size="8" font-family="monospace" text-anchor="middle">OEE</text>
+</svg>

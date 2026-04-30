@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" data-type="valve" data-bind="state" data-states="Open,Closed,Faulted">
+  <polygon points="6,10 22,22 6,34" fill="none" stroke="var(--color,#2a3550)" stroke-width="2"/>
+  <polygon points="38,10 22,22 38,34" fill="none" stroke="var(--color,#2a3550)" stroke-width="2"/>
+  <line x1="22" y1="4" x2="22" y2="10" stroke="var(--color,#2a3550)" stroke-width="2"/>
+  <rect x="16" y="2" width="12" height="4" fill="var(--color,#2a3550)" rx="1" opacity=".5"/>
+</svg>

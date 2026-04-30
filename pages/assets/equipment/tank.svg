@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" data-type="tank" data-bind="level" data-max="100" data-unit="%">
+  <rect x="8" y="4" width="28" height="38" fill="none" stroke="#2a3550" stroke-width="1.5" rx="3"/>
+  <rect x="9" y="10" width="26" height="32" fill="var(--color,#38b5f9)" opacity=".35" rx="2" data-field="fill"/>
+  <text x="22" y="28" fill="#fff" font-size="9" font-family="monospace" text-anchor="middle" font-weight="600" data-field="value">0%</text>
+</svg>

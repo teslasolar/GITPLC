@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 40" data-type="state-machine" data-bind="packml">
+  <rect x="0" y="0" width="600" height="40" fill="#0c1018" rx="6"/>
+  <g font-size="7" font-family="monospace" text-anchor="middle">
+    <rect x="4" y="8" width="50" height="24" rx="4" fill="none" stroke="#2a3550"/><text x="29" y="24" fill="#4a5a78">Stopped</text>
+    <text x="62" y="24" fill="#1a2235">→</text>
+    <rect x="70" y="8" width="40" height="24" rx="4" fill="none" stroke="#2a3550"/><text x="90" y="24" fill="#4a5a78">Idle</text>
+    <text x="118" y="24" fill="#1a2235">→</text>
+    <rect x="126" y="8" width="54" height="24" rx="4" fill="none" stroke="#2a3550"/><text x="153" y="24" fill="#4a5a78">Starting</text>
+    <text x="188" y="24" fill="#1a2235">→</text>
+    <rect x="196" y="8" width="54" height="24" rx="4" fill="none" stroke="#42e898" data-active="Execute"/><text x="223" y="24" fill="#42e898" font-weight="600">Execute</text>
+    <text x="258" y="24" fill="#1a2235">→</text>
+    <rect x="266" y="8" width="68" height="24" rx="4" fill="none" stroke="#2a3550"/><text x="300" y="24" fill="#4a5a78">Completing</text>
+    <text x="342" y="24" fill="#1a2235">→</text>
+    <rect x="350" y="8" width="60" height="24" rx="4" fill="none" stroke="#2a3550"/><text x="380" y="24" fill="#4a5a78">Complete</text>
+  </g>
+</svg>

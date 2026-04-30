@@ -50,6 +50,9 @@
   if(typeof applyLiveValues==='function'){applyLiveValues();setInterval(applyLiveValues,30000)}
   if(typeof initHeartbeat==='function')initHeartbeat();
 
+  // Load dynamic SVGs from _svgs tag: mcp(api(cli(cmd(params))))
+  if(typeof svgMCP==='function')svgMCP('_svgs').then(function(n){if(n)console.log('[svg] '+n+' assets loaded from tag')});
+
   // East dock — status dashboard, refreshes every 5s
   if(typeof renderEastDock==='function'){renderEastDock();setInterval(renderEastDock,5000)}
 })();
