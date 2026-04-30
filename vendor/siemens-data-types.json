@@ -1,0 +1,21 @@
+{
+  "_udt": "Siemens_DataTypes",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "siemens",
+  "type_map": {
+    "Bool": "BOOL",
+    "SInt": "SINT",
+    "Int": "INT",
+    "DInt": "DINT",
+    "LInt": "LINT",
+    "Real": "REAL",
+    "LReal": "LREAL",
+    "String": "STRING",
+    "Time": "TIME",
+    "S5Time": "TIME",
+    "IEC_TIMER": "TIMER",
+    "IEC_COUNTER": "COUNTER",
+    "PID_Compact": "PID",
+    "PID_3Step": "PID"
+  }
+}
