@@ -31,4 +31,5 @@
 
   // Live values from _live tag → refreshes every 30s
   if(typeof applyLiveValues==='function'){applyLiveValues();setInterval(applyLiveValues,30000)}
+  if(typeof initHeartbeat==='function')initHeartbeat();
 })();

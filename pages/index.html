@@ -29,8 +29,11 @@
   <div class="detail" id="detail-panel"></div>
 </div>
 <div class="ftr">
-  <span>🔧 GitPLC · ISA-88/95 · PackML · OPC-UA · MQTT · Modbus</span>
+  <div id="heartbeat"></div>
+  <span>🔧 GitPLC · ISA-88/95 · OPC-UA · MQTT</span>
   <span style="flex:1"></span>
+  <span id="ftr-hb" style="color:var(--t2)"></span>
+  <span style="color:var(--b)">│</span>
   <span id="ftr-stats"></span>
 </div>
 <script src="assets/plc-svg.js"></script>
@@ -44,6 +47,7 @@
 <script src="engine/alarm-monitor.js"></script>
 <script src="engine/dynamic-index.js"></script>
 <script src="engine/live-values.js"></script>
+<script src="engine/heartbeat.js"></script>
 <script src="ui/views.js"></script>
 <script src="ui/detail.js"></script>
 <script src="app.js"></script>

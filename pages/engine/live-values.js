@@ -19,7 +19,7 @@ function applyLiveValues(){
       if(k.startsWith('motor'))html+=svgMotor(e.state==='Running',false)+'<span style="font-size:6px;color:'+(e.state==='Running'?'#42e898':'#333')+'">'+k+'<br>'+e.state+(e.current?' '+e.current+'A':'')+'</span>';
       else if(k.startsWith('v'))html+=svgValve(e.state==='Open',false)+'<span style="font-size:6px;color:'+(e.state==='Open'?'#42e898':'#333')+'">'+k+'<br>'+e.state+'</span>';
       else if(k.startsWith('tank'))html+=svgTank(e.level||0,'#38b5f9')+'<span style="font-size:6px;color:#38b5f9">'+k+(e.temp?' '+e.temp+'°':'')+'</span>';
-      else if(k.startsWith('pid'))html+='<span style="font-size:6px;padding:2px 4px;border:1px solid #38b5f9;border-radius:3px;color:#38b5f9">'+k+' SP:'+e.sp+' PV:'+e.pv+' CV:'+e.cv+'</span>';
+      else if(k.startsWith('pid'))html+=(typeof svgPID==='function'?svgPID(e.sp,e.pv,e.cv):'<span style="font-size:6px;color:#38b5f9">'+k+'</span>');
     }
     eqEl.innerHTML=html+'</div>';
   }
