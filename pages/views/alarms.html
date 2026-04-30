@@ -1,6 +1,22 @@
 <div id="alarms-view">
-  <div class="tpl-head" style="font-size:9px;margin-bottom:6px">🚨 ISA-18.2 Alarm Management</div>
-  <div id="alarm-priorities"></div>
-  <div id="alarm-states"></div>
-  <div id="alarm-metrics"></div>
+  <div style="display:flex;gap:6px;margin-bottom:8px" id="alarm-priority-summary"></div>
+  <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px;margin-bottom:8px">
+    <div style="font-size:8px;color:#ff4466;margin-bottom:4px;border-bottom:1px solid #1a0010;padding-bottom:2px">🚨 Live Alarms (GitHub Issues)</div>
+    <div id="alarm-live-list"></div>
+    <div style="font-size:6px;color:#3a4860;margin-top:4px">💬 Comment = active · Close = cleared · Reopen = return</div>
+  </div>
+  <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px;margin-bottom:8px">
+    <div style="font-size:8px;color:#f0a030;margin-bottom:4px">📐 ISA-18.2 Lifecycle</div>
+    <div id="alarm-sm"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#38b5f9;margin-bottom:4px">Priority Config</div>
+      <div id="alarm-config"></div>
+    </div>
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#42e898;margin-bottom:4px">Metrics</div>
+      <div id="alarm-metrics-data"></div>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,21 @@
 <div id="kpi-view">
-  <div class="tpl-head" style="font-size:9px;margin-bottom:6px">📊 KPIs — OEE / Downtime / Quality</div>
-  <div id="kpi-oee"></div>
-  <div id="kpi-downtime"></div>
-  <div id="kpi-quality"></div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px" id="kpi-gauges"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#42e898;margin-bottom:4px">📊 OEE</div>
+      <div id="kpi-oee-detail"></div>
+    </div>
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#f0a030;margin-bottom:4px">⏱ Downtime</div>
+      <div id="kpi-downtime-detail"></div>
+    </div>
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#a080ff;margin-bottom:4px">✓ Quality</div>
+      <div id="kpi-quality-detail"></div>
+    </div>
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#38b5f9;margin-bottom:4px">🔧 Reliability</div>
+      <div id="kpi-reliability"></div>
+    </div>
+  </div>
 </div>

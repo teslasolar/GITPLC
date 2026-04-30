@@ -1,13 +1,17 @@
 <div id="overview">
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px" id="ov-gauges"></div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px" id="ov-equipment"></div>
-  <div style="margin-bottom:8px" id="ov-packml"></div>
-  <div id="ov-alarms">
-    <div style="font-size:9px;color:var(--er);margin-bottom:4px">🚨 Active Alarms</div>
-    <div id="ov-alarm-list"></div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px" id="ov-gauges"></div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;padding:6px;background:#0a0d15;border:1px solid #161d2a;border-radius:4px" id="ov-equipment">
+    <div style="color:#3a4860;font-size:7px">loading equipment...</div>
   </div>
-  <div style="margin-top:8px" id="ov-programs">
-    <div style="font-size:9px;color:var(--ig);margin-bottom:4px">⚙ Running Programs</div>
-    <div id="ov-program-list"></div>
+  <div style="padding:4px 6px;background:#0a0d15;border:1px solid #161d2a;border-radius:4px;margin-bottom:8px" id="ov-packml"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#ff4466;margin-bottom:4px;border-bottom:1px solid #161d2a;padding-bottom:2px">🚨 Active Alarms</div>
+      <div id="ov-alarm-list"></div>
+    </div>
+    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
+      <div style="font-size:8px;color:#38b5f9;margin-bottom:4px;border-bottom:1px solid #161d2a;padding-bottom:2px">⚙ Programs</div>
+      <div id="ov-program-list"></div>
+    </div>
   </div>
 </div>

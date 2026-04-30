@@ -33,8 +33,37 @@ function _populatePrograms(){
   var progs=getUDTsByDir('programs/');
   for(var k in progs)el.innerHTML+='<div class="udt-card"><h3>'+(progs[k]._udt||k)+'</h3><pre>'+JSON.stringify(progs[k],null,1).slice(0,200)+'</pre></div>';
 }
-function _populateAlarms(){if(typeof renderAlarms==='function')renderAlarms(document.getElementById('alarms-view')||document.getElementById('main-panel'))}
-function _populateKPIs(){if(typeof renderKPIs==='function')renderKPIs(document.getElementById('kpi-view')||document.getElementById('main-panel'))}
+function _populateAlarms(){
+  renderAlarmPanel(document.getElementById('alarm-live-list'));
+  // Priority summary
+  var ps=document.getElementById('alarm-priority-summary');
+  if(ps&&ALARMS.items.length){var c=[0,0,0,0,0];ALARMS.items.forEach(function(a){c[a.priority]++});
+    ps.innerHTML=[1,2,3,4].map(function(p){return '<div style="padding:3px 8px;border-radius:3px;font-size:8px;border:1px solid '+PRI_COLOR[p]+';color:'+PRI_COLOR[p]+'">P'+p+': '+(c[p]||0)+'</div>'}).join('')}
+  // Alarm state machine SVG
+  var sm=document.getElementById('alarm-sm');
+  if(sm)sm.innerHTML=['NORMAL','UNACK','ACKED','RTN_UNACK','SHELVED','DISABLED'].map(function(s){return svgStateChip(s,s==='UNACK','#ff4466')}).join('<span class="sm-arrow">→</span>');
+  // Config from UDTs
+  var ac=document.getElementById('alarm-config');
+  var pri=getUDT('alarms/priority.json');
+  if(ac&&pri&&pri.priorities)ac.innerHTML=pri.priorities.map(function(p){
+    return '<div class="alarm-row"><span style="color:'+PRI_COLOR[p.level]+';font-weight:700">P'+p.level+'</span><span>'+p.name+'</span><span style="color:var(--t2)">&lt;'+p.time+'</span></div>'}).join('');
+  // Metrics
+  var am=document.getElementById('alarm-metrics-data');
+  var met=getUDT('alarms/metrics.json');
+  if(am&&met)am.innerHTML='<pre style="font-size:6px;color:#d4a94a">'+JSON.stringify(met,null,1).slice(0,300)+'</pre>';
+}
+function _populateKPIs(){
+  var g=document.getElementById('kpi-gauges');
+  if(g)g.innerHTML=svgGauge('OEE',87,100,'#42e898','%')+svgGauge('MTBF',342,500,'#38b5f9','hr')+svgGauge('MTTR',1.2,4,'#f0a030','hr')+svgGauge('FPY',98,100,'#a080ff','%');
+  var oee=document.getElementById('kpi-oee-detail');
+  if(oee)oee.innerHTML=['Availability 92%','Performance 96%','Quality 99%'].map(function(k){
+    var v=parseInt(k.match(/\d+/)[0]);return '<div style="font-size:7px;padding:2px 0">'+k+'<div class="kpi-bar"><div class="kpi-fill" style="width:'+v+'%;background:var(--ok)"></div></div></div>'}).join('');
+  var dt=document.getElementById('kpi-downtime-detail');
+  if(dt)dt.innerHTML=['Planned 2.1h','Unplanned 0.8h','Changeover 1.4h','Breakdown 0.3h'].map(function(k){
+    return '<div style="font-size:7px;padding:1px 0;display:flex;justify-content:space-between"><span style="color:var(--t2)">'+k.split(' ')[0]+'</span><span style="color:var(--wr)">'+k.split(' ')[1]+'</span></div>'}).join('');
+  var q=document.getElementById('kpi-quality-detail');if(q)q.innerHTML='<div style="font-size:7px">FPY: 98.2% · Defect: 0.4% · Scrap: 0.2% · Rework: 1.2%</div>';
+  var r=document.getElementById('kpi-reliability');if(r)r.innerHTML='<div style="font-size:7px">MTBF: 342h · MTTR: 1.2h · Failures: 3 this month</div>';
+}
 function _populateTags(){renderTagsInline(document.getElementById('tags-view')||document.getElementById('main-panel'))}
 
 function renderExplorerInline(el){
