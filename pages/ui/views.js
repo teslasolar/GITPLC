@@ -46,29 +46,25 @@ function renderTagsInline(el){
   for(var k in tags)el.innerHTML+='<div class="udt-card"><h3>#'+(tags[k]._issue||'')+' '+k+'</h3><pre>'+JSON.stringify(tags[k],null,1).slice(0,200)+'</pre></div>';
 }
 function _populateOverview(){
-  // Gauges
+  // Use live values from _live tag, fallback to defaults
+  if(typeof applyLiveValues==='function')applyLiveValues();
+  // Fallback gauges if no live tag
   var g=document.getElementById('ov-gauges');
-  if(g)g.innerHTML=svgGauge('OEE',87,100,'#42e898','%')+svgGauge('Avail',92,100,'#38b5f9','%')+svgGauge('Perf',96,100,'#d4a94a','%')+svgGauge('Qual',99,100,'#a080ff','%');
-  // Equipment
+  if(g&&!g.innerHTML)g.innerHTML=svgGauge('OEE',87,100,'#42e898','%')+svgGauge('Avail',92,100,'#38b5f9','%')+svgGauge('Perf',96,100,'#d4a94a','%')+svgGauge('Qual',99,100,'#a080ff','%');
+  // Fallback equipment
   var eq=document.getElementById('ov-equipment');
-  if(eq)eq.innerHTML='<div style="display:flex;gap:6px;align-items:center">'
-    +svgMotor(true,false)+'<span style="font-size:7px;color:#42e898">Motor1 RUN</span>'
-    +svgMotor(false,false)+'<span style="font-size:7px;color:#333">Motor2 OFF</span>'
-    +svgValve(true,false)+'<span style="font-size:7px;color:#42e898">V101 OPEN</span>'
-    +svgValve(false,false)+'<span style="font-size:7px;color:#333">V102 CLOSED</span>'
-    +svgTank(72,'#38b5f9')+'<span style="font-size:7px;color:#38b5f9">Tank1</span>'
-    +svgTank(31,'#42e898')+'<span style="font-size:7px;color:#42e898">Tank2</span></div>';
-  // PackML state
+  if(eq&&!eq.innerHTML)eq.innerHTML='<div style="display:flex;gap:6px;align-items:center">'+svgMotor(true,false)+'<span style="font-size:7px;color:#42e898">Motor1</span>'+svgValve(true,false)+'<span style="font-size:7px;color:#42e898">V101</span>'+svgTank(72)+'<span style="font-size:7px">Tank1</span></div>';
+  // Fallback PackML
   var sm=document.getElementById('ov-packml');
-  if(sm){var states=['Stopped','Idle','Starting','Execute','Completing','Complete','Resetting'];
-    sm.innerHTML='<div style="font-size:8px;color:var(--t2);margin-bottom:2px">PackML:</div>'+states.map(function(s){return svgStateChip(s,s==='Execute','#42e898')}).join('')}
+  if(sm&&!sm.innerHTML){var states=['Stopped','Idle','Starting','Execute','Completing','Complete','Resetting'];
+    sm.innerHTML=states.map(function(s){return svgStateChip(s,s==='Execute','#42e898')}).join('')}
   // Alarms
   renderAlarmPanel(document.getElementById('ov-alarm-list'));
   // Programs
   var pl=document.getElementById('ov-program-list');
   if(pl){var progs=getUDTsByDir('programs/');
     pl.innerHTML=Object.keys(progs).map(function(k){var p=progs[k];
-      return '<div style="font-size:7px;padding:2px 0;border-bottom:1px solid #111;display:flex;gap:6px"><span style="color:#42e898">●</span><span style="color:var(--ig)">'+(p._udt||k)+'</span><span style="color:var(--t2)">'+(p.desc||'')+'</span></div>'}).join('')}
+      return '<div style="font-size:7px;padding:2px 0;border-bottom:1px solid #111;display:flex;gap:6px"><span style="color:#42e898">●</span><span style="color:var(--ig)">'+(p._udt||k)+'</span></div>'}).join('')}
 }
 
 async function _populateStats(){
