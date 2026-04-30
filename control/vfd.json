@@ -1,0 +1,24 @@
+{
+  "_udt": "CM_VFD",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "cmd": {
+      "type": "STRUCT",
+      "fields": {"run": "BOOL", "stop": "BOOL", "fwd": "BOOL", "rev": "BOOL", "speed_sp": "REAL", "reset": "BOOL"}
+    },
+    "sts": {
+      "type": "STRUCT",
+      "fields": {"running": "BOOL", "at_speed": "BOOL", "faulted": "BOOL", "speed_act": "REAL", "current": "REAL", "torque": "REAL"}
+    },
+    "cfg": {
+      "type": "STRUCT",
+      "fields": {"min_speed": "REAL", "max_speed": "REAL", "accel": "TIME", "decel": "TIME"}
+    },
+    "io": {
+      "type": "STRUCT",
+      "fields": {"run_cmd": "BOOL:out", "speed_sp": "INT:out", "speed_act": "INT:in", "fault": "BOOL:in"}
+    }
+  }
+}

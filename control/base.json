@@ -1,0 +1,22 @@
+{
+  "_udt": "CM_Base",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "fields": {
+    "tag": {"type": "STRING[32]"},
+    "desc": {"type": "STRING[80]"},
+    "state": {"type": "DINT", "enum": {"0": "Off", "1": "Starting", "2": "Running", "3": "Stopping", "4": "Faulted"}},
+    "mode": {"type": "DINT", "enum": {"0": "OOS", "1": "Manual", "2": "Auto"}},
+    "fault": {
+      "type": "STRUCT",
+      "fields": {
+        "active": "BOOL", "code": "DINT", "msg": "STRING[80]",
+        "timestamp": "DT", "ack": "BOOL", "reset": "BOOL"
+      }
+    },
+    "sim": {
+      "type": "STRUCT",
+      "fields": {"enable": "BOOL", "value": "REAL", "ramp_enable": "BOOL", "ramp_rate": "REAL"}
+    }
+  }
+}

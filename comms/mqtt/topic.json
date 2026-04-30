@@ -1,0 +1,19 @@
+{
+  "_udt": "MQTT_Topic",
+  "_layer": 7,
+  "_schema": "gitplc/comms/mqtt/v1",
+  "fields": {
+    "path": {"type": "STRING", "format": "{namespace}/{group}/{edge}/{device}/{point}"},
+    "qos": {
+      "type": "DINT",
+      "enum": {
+        "0": {"name": "AtMostOnce", "delivery": "Fire-forget"},
+        "1": {"name": "AtLeastOnce", "delivery": "Guaranteed"},
+        "2": {"name": "ExactlyOnce", "delivery": "Exactly once"}
+      }
+    },
+    "retain": {"type": "BOOL"},
+    "payload_format": {"type": "ENUM", "values": ["JSON", "Protobuf", "Sparkplug"]}
+  },
+  "example": "spBv1.0/Plant1/DCMD/PLC01/Output1"
+}

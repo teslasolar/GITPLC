@@ -1,0 +1,25 @@
+{
+  "_udt": "Batch",
+  "_layer": 5,
+  "_schema": "gitplc/batch/v1",
+  "_standard": "ISA-88",
+  "fields": {
+    "id": {"type": "UDINT"},
+    "recipe_id": {"type": "STRING[40]"},
+    "recipe_ver": {"type": "STRING[20]"},
+    "product": {"type": "STRING[40]"},
+    "lot": {"type": "STRING[40]"},
+    "state": {"type": "REF:batch/states"},
+    "times": {"type": "STRUCT", "fields": {"create": "DT", "start": "DT", "end": "DT"}},
+    "unit_allocs": {"type": "ARRAY OF {unit:STRING, start:DT, end:DT}"},
+    "phases": {"type": "ARRAY OF REF:batch/phase"},
+    "params": {
+      "type": "STRUCT",
+      "fields": {"size": "REAL", "size_unit": "STRING[10]", "priority": "DINT"}
+    },
+    "report": {
+      "type": "STRUCT",
+      "fields": {"actual_size": "REAL", "yield": "REAL", "quality_grade": "STRING[10]", "deviations": "UDINT"}
+    }
+  }
+}

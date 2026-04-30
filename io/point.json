@@ -1,0 +1,16 @@
+{
+  "_udt": "IO_Point",
+  "_layer": 6,
+  "_schema": "gitplc/io/v1",
+  "fields": {
+    "channel": {"type": "DINT"},
+    "tag": {"type": "STRING[40]"},
+    "desc": {"type": "STRING[80]"},
+    "type": {"type": "DINT", "enum": ["DI", "DO", "AI", "AO"]},
+    "raw": {"type": "DINT"},
+    "value": {"type": "REAL"},
+    "quality": {"type": "DINT", "enum": {"192": "GOOD", "0": "BAD", "64": "UNCERTAIN"}},
+    "alarm": {"type": "BOOL"},
+    "wire_fault": {"type": "BOOL"}
+  }
+}

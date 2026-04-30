@@ -1,0 +1,20 @@
+{
+  "_udt": "OPC_Variable",
+  "_layer": 6,
+  "_schema": "gitplc/comms/opcua/v1",
+  "_base": "OPC_Node",
+  "fields": {
+    "data_type": {"type": "STRING"},
+    "value": {"type": "ANY"},
+    "source_timestamp": {"type": "DT"},
+    "server_timestamp": {"type": "DT"},
+    "status": {"type": "UDINT", "desc": "OPC quality code"},
+    "access": {"type": "ENUM", "values": ["RO", "RW", "WO"]},
+    "historizing": {"type": "BOOL"}
+  },
+  "companion_specs": {
+    "ISA-95": "ns=isa95;Equipment,Material,Personnel,Process",
+    "PackML": "ns=packml;StateMachine,Admin,Status,Command",
+    "PLCopen": "ns=plcopen;Motion control"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "_udt": "Procedure",
+  "_layer": 5,
+  "_schema": "gitplc/batch/v1",
+  "_standard": "ISA-88",
+  "fields": {
+    "id": {"type": "STRING[40]"},
+    "unit_procedures": {
+      "type": "ARRAY OF STRUCT",
+      "fields": {
+        "id": "STRING[40]",
+        "unit_class": "STRING[40]",
+        "operations": "ARRAY OF Operation",
+        "ordering": "ENUM:Sequential|Parallel"
+      }
+    },
+    "ordering": {"type": "ENUM", "values": ["Sequential", "Parallel", "Mixed"]}
+  },
+  "sub_types": {
+    "Operation": {
+      "id": "STRING[40]",
+      "phases": "ARRAY OF REF:batch/phase",
+      "ordering": "ENUM:Sequential|Parallel"
+    }
+  }
+}

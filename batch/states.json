@@ -1,0 +1,27 @@
+{
+  "_udt": "BatchPhaseStates",
+  "_layer": 5,
+  "_schema": "gitplc/batch/v1",
+  "_standard": "ISA-88",
+  "phase_state": {
+    "enum": {
+      "0": "Idle", "1": "Running", "2": "Complete", "3": "Pausing",
+      "4": "Paused", "5": "Holding", "6": "Held", "7": "Restarting",
+      "8": "Stopping", "9": "Stopped", "10": "Aborting", "11": "Aborted"
+    },
+    "transitions": [
+      {"from": "Idle", "to": "Running", "trigger": "Start"},
+      {"from": "Running", "to": "Complete", "trigger": "SC"},
+      {"from": "Running", "to": "Holding", "trigger": "Hold"},
+      {"from": "Held", "to": "Restarting", "trigger": "Restart"},
+      {"from": "Running", "to": "Stopping", "trigger": "Stop"},
+      {"from": "*", "to": "Aborting", "trigger": "Abort"}
+    ]
+  },
+  "batch_state": {
+    "enum": {
+      "0": "Created", "1": "Ready", "2": "Running",
+      "3": "Held", "4": "Complete", "5": "Aborted"
+    }
+  }
+}

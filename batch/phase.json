@@ -1,0 +1,30 @@
+{
+  "_udt": "Phase",
+  "_layer": 5,
+  "_schema": "gitplc/batch/v1",
+  "_standard": "ISA-88",
+  "fields": {
+    "id": {"type": "DINT"},
+    "name": {"type": "STRING[40]"},
+    "state": {"type": "REF:batch/states"},
+    "owner": {"type": "UDINT", "desc": "batch ID"},
+    "unit": {"type": "STRING[40]", "desc": "allocated unit"},
+    "step": {"type": "DINT"},
+    "params": {
+      "type": "STRUCT",
+      "fields": {
+        "target_temp": "REAL", "target_time": "TIME", "target_level": "REAL",
+        "target_speed": "REAL", "target_pressure": "REAL",
+        "custom": "ARRAY[0..19] OF REAL"
+      }
+    },
+    "report": {
+      "type": "STRUCT",
+      "fields": {
+        "actual_temp": "REAL", "actual_time": "TIME", "actual_level": "REAL",
+        "material_in": "REAL", "material_out": "REAL", "energy": "REAL"
+      }
+    },
+    "times": {"type": "STRUCT", "fields": {"start": "DT", "end": "DT", "running": "TIME", "held": "TIME"}}
+  }
+}

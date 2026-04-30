@@ -1,0 +1,17 @@
+{
+  "_udt": "ControlModule",
+  "_layer": 3,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "ControlModule",
+  "_parent": "EquipmentModule",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "path": {"type": "PATH", "format": ".../EM/CM"},
+    "type": {"type": "ENUM", "values": ["Analog", "Discrete", "Motor", "Valve", "PID", "VFD"]},
+    "io": {"type": "ARRAY OF REF:io/point"},
+    "state": {"type": "DINT", "enum": {"0": "Off", "1": "Starting", "2": "Running", "3": "Stopping", "4": "Faulted"}},
+    "mode": {"type": "DINT", "enum": {"0": "OOS", "1": "Manual", "2": "Auto"}},
+    "sim": {"type": "STRUCT", "fields": ["enable:BOOL", "value:REAL"]}
+  }
+}

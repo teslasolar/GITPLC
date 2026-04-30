@@ -1,0 +1,17 @@
+{
+  "_udt": "Converter_AB_Export",
+  "_layer": 7,
+  "_schema": "gitplc/converter/v1",
+  "vendor": "ab",
+  "direction": "export",
+  "target_format": ".L5X",
+  "emit": "UDT->XML(L5X schema)",
+  "mapping": {
+    "UDT:Method": {"to": "AOI",     "desc": "method to Add-On Instruction"},
+    "UDT":        {"to": "UDT",     "desc": "universal UDT to AB UDT"},
+    "Field":      {"to": "Tag",     "desc": "field to tag"},
+    "Namespace":  {"to": "Program", "desc": "namespace to program"},
+    "Method":     {"to": "Routine", "desc": "method to routine"}
+  },
+  "validation": ["type_check", "addr_range", "name_length<=40", "nesting<=8"]
+}

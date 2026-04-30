@@ -1,0 +1,18 @@
+{
+  "_udt": "Converter_Codesys_Import",
+  "_layer": 7,
+  "_schema": "gitplc/converter/v1",
+  "vendor": "codesys",
+  "direction": "import",
+  "source_formats": [".project", ".xml"],
+  "parse": "PLCopen XML->emit UDT",
+  "mapping": {
+    "FUNCTION_BLOCK": {"to": "UDT:Method"},
+    "STRUCT":         {"to": "UDT"},
+    "VAR":            {"to": "Field"},
+    "PROGRAM":        {"to": "Namespace"},
+    "FUNCTION":       {"to": "Method"}
+  },
+  "addr_format": "%[I|Q|M][X|B|W|D][addr]",
+  "notes": "Also covers Beckhoff (IEC 61131-3 compatible)"
+}

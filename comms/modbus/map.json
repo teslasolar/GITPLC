@@ -1,0 +1,23 @@
+{
+  "_udt": "Modbus_Map",
+  "_layer": 8,
+  "_schema": "gitplc/comms/modbus/v1",
+  "fields": {
+    "tag": {"type": "PATH"},
+    "unit_id": {"type": "DINT"},
+    "register_type": {"type": "ENUM", "values": ["Coil", "DI", "HR", "IR"]},
+    "addr": {"type": "DINT"},
+    "data_type": {"type": "STRING"},
+    "scale": {"type": "REAL", "default": 1.0},
+    "offset": {"type": "REAL", "default": 0.0},
+    "byte_order": {"type": "STRING", "default": "ABCD"}
+  },
+  "function_codes": {
+    "FC01": "Read Coils", "FC02": "Read DI", "FC03": "Read HR", "FC04": "Read IR",
+    "FC05": "Write Coil", "FC06": "Write HR", "FC15": "Write Multi Coil", "FC16": "Write Multi HR"
+  },
+  "exceptions": {
+    "01": "Illegal Function", "02": "Illegal Address", "03": "Illegal Value",
+    "04": "Device Fail", "05": "Ack", "06": "Busy"
+  }
+}

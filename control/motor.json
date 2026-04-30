@@ -1,0 +1,24 @@
+{
+  "_udt": "CM_Motor",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "cmd": {
+      "type": "STRUCT",
+      "fields": {"start": "BOOL", "stop": "BOOL", "jog": "BOOL", "reset": "BOOL"}
+    },
+    "sts": {
+      "type": "STRUCT",
+      "fields": {"running": "BOOL", "ready": "BOOL", "faulted": "BOOL", "current": "REAL", "runtime": "TIME"}
+    },
+    "cfg": {
+      "type": "STRUCT",
+      "fields": {"start_delay": "TIME", "stop_delay": "TIME", "jog_time": "TIME", "overcurrent": "REAL"}
+    },
+    "io": {
+      "type": "STRUCT",
+      "fields": {"run_cmd": "BOOL:out", "run_fbk": "BOOL:in", "fault": "BOOL:in", "current": "INT:in"}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_udt": "Unit",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "Unit",
+  "_parent": "ProcessCell",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "path": {"type": "PATH", "format": ".../ProcessCell/Unit"},
+    "ems": {"type": "ARRAY OF EquipmentModule"},
+    "state": {"type": "REF:equipment/states/packml"},
+    "mode": {"type": "REF:equipment/states/modes"},
+    "allocated_to": {"type": "REF:batch/batch|null"},
+    "cmd": {"type": "STRUCT", "fields": ["start:BOOL", "stop:BOOL", "hold:BOOL", "abort:BOOL", "reset:BOOL"]},
+    "sts": {"type": "STRUCT", "fields": ["ready:BOOL", "running:BOOL", "faulted:BOOL", "runtime:TIME"]}
+  }
+}

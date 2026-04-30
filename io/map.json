@@ -1,0 +1,18 @@
+{
+  "_udt": "IO_Map",
+  "_layer": 6,
+  "_schema": "gitplc/io/v1",
+  "fields": {
+    "plc_addr": {"type": "STRING[20]", "desc": "%I0.0, %IW10, etc"},
+    "card": {"type": "DINT", "desc": "slot/rack"},
+    "channel": {"type": "DINT"},
+    "tag": {"type": "STRING[40]", "desc": "linked CM tag"},
+    "desc": {"type": "STRING[80]"}
+  },
+  "addr_formats": {
+    "ab": "%B[file]:[word]/[bit]",
+    "siemens": "%[area][byte].[bit]",
+    "codesys": "%[I|Q|M][X|B|W|D][addr]",
+    "omron": "CIO[word].[bit]|W[word]|D[word]"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_udt": "TagConfig",
+  "_schema": "gitplc/tags/v1",
+  "desc": "Tag database configuration for GitHub Issues sync",
+  "source": "github_issues",
+  "sync": {
+    "repo": "KCC",
+    "label": "tag-sync",
+    "poll_interval": "5m",
+    "auto_merge": true
+  },
+  "naming": {
+    "format": "{Area}_{Unit}_{Module}_{Point}",
+    "separator": "_",
+    "max_length": 40,
+    "case": "PascalCase"
+  },
+  "defaults": {
+    "scan_rate": "100ms",
+    "historize": false,
+    "opc_access": "RW"
+  },
+  "paths": {
+    "udt_root": "../core/",
+    "equipment_root": "../equipment/",
+    "io_root": "../io/"
+  }
+}

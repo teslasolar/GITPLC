@@ -1,0 +1,16 @@
+{
+  "_udt": "Site",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "Site",
+  "_parent": "Enterprise",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "desc": {"type": "STRING[80]"},
+    "path": {"type": "PATH", "format": "Enterprise/Site"},
+    "areas": {"type": "ARRAY OF Area"},
+    "location": {"type": "STRUCT", "fields": ["lat:REAL", "lon:REAL", "tz:STRING"]},
+    "sts": {"type": "DINT", "enum": {"0": "Offline", "1": "Online", "2": "Maintenance"}}
+  }
+}

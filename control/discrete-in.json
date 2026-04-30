@@ -1,0 +1,14 @@
+{
+  "_udt": "CM_DiscreteIn",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "input": {"type": "BOOL", "dir": "in", "desc": "from physical input"},
+    "value": {"type": "BOOL", "desc": "processed value"},
+    "invert": {"type": "BOOL", "default": false},
+    "debounce": {"type": "TIME", "default": "T#20ms"},
+    "on_delay": {"type": "TIME", "default": "T#0ms"},
+    "off_delay": {"type": "TIME", "default": "T#0ms"}
+  }
+}

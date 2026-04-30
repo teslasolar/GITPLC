@@ -1,0 +1,20 @@
+{
+  "_udt": "PackML_Mode",
+  "_layer": 2,
+  "_schema": "gitplc/states/v1",
+  "fields": {
+    "current": {"type": "DINT"},
+    "requested": {"type": "DINT"}
+  },
+  "enum": {
+    "1": "Production",
+    "2": "Maintenance",
+    "3": "Manual",
+    "4": "Auto",
+    "5": "SemiAuto"
+  },
+  "rules": [
+    {"id": "M1", "condition": "mode_change requires state=Stopped|Idle", "severity": "error"},
+    {"id": "M2", "condition": "Manual disables auto-start", "severity": "warn"}
+  ]
+}

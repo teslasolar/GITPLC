@@ -1,0 +1,18 @@
+{
+  "_udt": "EquipmentModule",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "EquipmentModule",
+  "_parent": "Unit",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "path": {"type": "PATH", "format": ".../Unit/EM"},
+    "type": {"type": "ENUM", "values": ["Agitator", "Heater", "Pump", "Valve", "Feeder", "Mixer"]},
+    "cms": {"type": "ARRAY OF ControlModule"},
+    "state": {"type": "REF:equipment/states/packml"},
+    "mode": {"type": "REF:equipment/states/modes"},
+    "cmd": {"type": "STRUCT", "fields": ["start:BOOL", "stop:BOOL", "reset:BOOL"]},
+    "sts": {"type": "STRUCT", "fields": ["ready:BOOL", "running:BOOL", "faulted:BOOL"]}
+  }
+}

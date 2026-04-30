@@ -1,0 +1,30 @@
+{
+  "_udt": "TagPrograms",
+  "_schema": "gitplc/tags/v1",
+  "desc": "Maps tags to loadable PLC program templates",
+  "programs": [
+    {
+      "id": "motor-start-stop",
+      "template": "../programs/motor-start-stop.json",
+      "auto_tags": ["*_Motor_*"],
+      "desc": "Auto-assign to motor tags"
+    },
+    {
+      "id": "pid-loop",
+      "template": "../programs/pid-loop.json",
+      "auto_tags": ["*_PID_*", "*_TempCtrl_*"],
+      "desc": "Auto-assign to PID/temp tags"
+    },
+    {
+      "id": "batch-phase",
+      "template": "../programs/batch-phase.json",
+      "auto_tags": ["*_Phase_*", "*_Batch_*"],
+      "desc": "Auto-assign to batch phase tags"
+    }
+  ],
+  "rules": [
+    "R1: tag pattern match assigns program template",
+    "R2: explicit assignment overrides auto",
+    "R3: one program per tag scope"
+  ]
+}

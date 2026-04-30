@@ -1,0 +1,25 @@
+{
+  "_udt": "Primitives",
+  "_layer": 1,
+  "_schema": "gitplc/primitives/v1",
+  "types": {
+    "BOOL":   {"bits": 1,  "signed": false, "range": [0, 1]},
+    "SINT":   {"bits": 8,  "signed": true,  "range": [-128, 127]},
+    "USINT":  {"bits": 8,  "signed": false, "range": [0, 255]},
+    "INT":    {"bits": 16, "signed": true,  "range": [-32768, 32767]},
+    "UINT":   {"bits": 16, "signed": false, "range": [0, 65535]},
+    "DINT":   {"bits": 32, "signed": true},
+    "UDINT":  {"bits": 32, "signed": false},
+    "LINT":   {"bits": 64, "signed": true},
+    "ULINT":  {"bits": 64, "signed": false},
+    "REAL":   {"bits": 32, "format": "IEEE754"},
+    "LREAL":  {"bits": 64, "format": "IEEE754"},
+    "STRING": {"bits": "var", "default_len": 80, "encoding": "UTF-8"},
+    "WSTRING":{"bits": "var", "encoding": "UTF-16"},
+    "TIME":   {"bits": 32, "resolution": "ms", "max": "T#49d"},
+    "LTIME":  {"bits": 64, "resolution": "ns"},
+    "DATE":   {"bits": 32, "format": "BCD|epoch_days"},
+    "TOD":    {"bits": 32, "resolution": "ms"},
+    "DT":     {"bits": 64, "format": "DATE+TOD"}
+  }
+}

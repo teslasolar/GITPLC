@@ -1,0 +1,13 @@
+{
+  "_udt": "Crosswalk_ISA95_ISA88",
+  "_schema": "gitplc/crosswalk/v1",
+  "mappings": [
+    {"from": "ISA95.WorkCenter",        "to": "ISA88.ProcessCell",    "type": "exact"},
+    {"from": "ISA95.WorkUnit",          "to": "ISA88.Unit",           "type": "exact"},
+    {"from": "ISA95.ProcessSegment",    "to": "ISA88.Operation",      "type": "semantic"},
+    {"from": "ISA95.ProductionSchedule","to": "ISA88.Batch",          "type": "semantic", "note": "schedule instantiates batch"},
+    {"from": "ISA95.Equipment",         "to": "ISA88.EquipmentModule","type": "partial"},
+    {"from": "ISA95.Material",          "to": "ISA88.Formula.input",  "type": "semantic"},
+    {"from": "ISA95.Personnel",         "to": "ISA88.Batch.operator", "type": "partial"}
+  ]
+}

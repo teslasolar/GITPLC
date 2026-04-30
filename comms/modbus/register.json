@@ -1,0 +1,21 @@
+{
+  "_udt": "Modbus_Register",
+  "_layer": 8,
+  "_schema": "gitplc/comms/modbus/v1",
+  "register_types": {
+    "Coil":          {"addr": "0-65535", "access": "RW", "type": "bit",    "fc_read": 1, "fc_write": 5, "fc_multi": 15},
+    "DiscreteInput": {"addr": "0-65535", "access": "RO", "type": "bit",    "fc_read": 2},
+    "HoldingReg":    {"addr": "0-65535", "access": "RW", "type": "uint16", "fc_read": 3, "fc_write": 6, "fc_multi": 16},
+    "InputReg":      {"addr": "0-65535", "access": "RO", "type": "uint16", "fc_read": 4}
+  },
+  "data_types": {
+    "BOOL":    {"regs": 0, "desc": "1 coil/1 bit"},
+    "INT16":   {"regs": 1, "signed": true},
+    "UINT16":  {"regs": 1, "signed": false},
+    "INT32":   {"regs": 2, "byte_order": "ABCD|CDAB|BADC|DCBA"},
+    "FLOAT32": {"regs": 2, "format": "IEEE754"},
+    "INT64":   {"regs": 4},
+    "FLOAT64": {"regs": 4, "format": "IEEE754"},
+    "STRING":  {"regs": "N", "desc": "2 chars/reg"}
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "_udt": "VendorMap",
+  "_layer": 1,
+  "_schema": "gitplc/vendors/v1",
+  "mapping": {
+    "BOOL":    {"ab": "BOOL",   "siemens": "Bool",    "codesys": "BOOL",   "beckhoff": "BOOL",   "omron": "BOOL",   "mitsubishi": "BOOL"},
+    "SINT":    {"ab": "SINT",   "siemens": "SInt",    "codesys": "SINT",   "beckhoff": "SINT",   "omron": "SINT",   "mitsubishi": "SINT"},
+    "INT":     {"ab": "INT",    "siemens": "Int",     "codesys": "INT",    "beckhoff": "INT",    "omron": "INT",    "mitsubishi": "INT"},
+    "DINT":    {"ab": "DINT",   "siemens": "DInt",    "codesys": "DINT",   "beckhoff": "DINT",   "omron": "DINT",   "mitsubishi": "DINT"},
+    "REAL":    {"ab": "REAL",   "siemens": "Real",    "codesys": "REAL",   "beckhoff": "REAL",   "omron": "REAL",   "mitsubishi": "REAL"},
+    "STRING":  {"ab": "STRING", "siemens": "String",  "codesys": "STRING", "beckhoff": "STRING", "omron": "STRING", "mitsubishi": "STRING"},
+    "TIME":    {"ab": "TIME",   "siemens": "Time",    "codesys": "TIME",   "beckhoff": "TIME",   "omron": "TIME",   "mitsubishi": "TIME"},
+    "COUNTER": {"ab": "CTU",    "siemens": "CTU",     "codesys": "CTU",    "beckhoff": "CTU",    "omron": "CTU",    "mitsubishi": "CTU"},
+    "TIMER":   {"ab": "TON",    "siemens": "TON",     "codesys": "TON",    "beckhoff": "TON",    "omron": "TIM",    "mitsubishi": "TON"},
+    "PID":     {"ab": "PIDE",   "siemens": "PID_Cpt", "codesys": "PID",    "beckhoff": "FB_PID", "omron": "PIDAT",  "mitsubishi": "PID"}
+  },
+  "addressing": {
+    "ab":       "%B[file]:[word]/[bit]",
+    "siemens":  "%[area][byte].[bit]",
+    "codesys":  "%[I|Q|M][X|B|W|D][addr]",
+    "beckhoff": "%[I|Q|M][X|B|W|D][addr]",
+    "omron":    "CIO[word].[bit]|W[word]|D[word]"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_udt": "AlarmInstance",
+  "_layer": 4,
+  "_schema": "gitplc/alarms/v1",
+  "fields": {
+    "id": {"type": "UDINT"},
+    "tag": {"type": "STRING[40]"},
+    "type": {"type": "DINT", "enum": ["HI", "HIHI", "LO", "LOLO", "DEV", "ROC", "DISC"]},
+    "priority": {"type": "DINT", "range": [1, 4]},
+    "state": {"type": "REF:alarms/states"},
+    "sp": {"type": "REAL", "desc": "setpoint"},
+    "pv": {"type": "REAL", "desc": "process value"},
+    "deadband": {"type": "REAL"},
+    "delay": {"type": "TIME"},
+    "times": {"type": "STRUCT", "fields": {"in": "DT", "ack": "DT", "out": "DT"}},
+    "user_ack": {"type": "STRING[20]"},
+    "msg": {"type": "STRING[80]"},
+    "shelved": {"type": "BOOL"},
+    "shelve_until": {"type": "DT"},
+    "suppressed": {"type": "BOOL"}
+  }
+}

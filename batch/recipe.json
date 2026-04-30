@@ -1,0 +1,23 @@
+{
+  "_udt": "Recipe",
+  "_layer": 5,
+  "_schema": "gitplc/batch/v1",
+  "_standard": "ISA-88",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "version": {"type": "STRING[20]"},
+    "level": {"type": "ENUM", "values": ["General", "Site", "Master", "Control"]},
+    "product": {"type": "STRING[40]"},
+    "procedure": {"type": "REF:batch/procedure"},
+    "formula": {
+      "type": "STRUCT",
+      "fields": {
+        "inputs": "ARRAY OF {material:STRING, qty:REAL, uom:STRING}",
+        "outputs": "ARRAY OF {material:STRING, qty:REAL, uom:STRING}",
+        "params": "ARRAY OF {name:STRING, value:REAL, uom:STRING}"
+      }
+    },
+    "equipment_req": {"type": "ARRAY OF STRING[40]"}
+  }
+}

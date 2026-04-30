@@ -1,0 +1,18 @@
+{
+  "_udt": "Converter_AB_Import",
+  "_layer": 7,
+  "_schema": "gitplc/converter/v1",
+  "vendor": "ab",
+  "direction": "import",
+  "source_formats": [".L5X", ".ACD"],
+  "parse": "XML->DOM->walk tags->emit UDT",
+  "mapping": {
+    "AOI":     {"to": "UDT:Method", "desc": "Add-On Instruction to UDT method"},
+    "UDT":     {"to": "UDT",        "desc": "AB UDT to universal UDT"},
+    "Tag":     {"to": "Field",      "desc": "tag to field"},
+    "Program": {"to": "Namespace",  "desc": "program to namespace scope"},
+    "Routine": {"to": "Method",     "desc": "routine to method"},
+    "Rung":    {"to": "Statement",  "desc": "ladder rung to IL statement"}
+  },
+  "addr_format": "%B[file]:[word]/[bit]"
+}

@@ -1,0 +1,17 @@
+{
+  "_udt": "Area",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "Area",
+  "_parent": "Site",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "desc": {"type": "STRING[80]"},
+    "path": {"type": "PATH", "format": "Enterprise/Site/Area"},
+    "process_cells": {"type": "ARRAY OF ProcessCell"},
+    "state": {"type": "REF:equipment/states/packml"},
+    "mode": {"type": "REF:equipment/states/modes"},
+    "alarms": {"type": "ARRAY OF REF:alarms/instance"}
+  }
+}

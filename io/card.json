@@ -1,0 +1,21 @@
+{
+  "_udt": "IO_Card",
+  "_layer": 6,
+  "_schema": "gitplc/io/v1",
+  "fields": {
+    "slot": {"type": "DINT"},
+    "type": {"type": "DINT", "enum": ["DI", "DO", "AI", "AO", "RTD", "TC", "HART", "COMBO"]},
+    "vendor": {"type": "STRING[20]"},
+    "model": {"type": "STRING[40]"},
+    "channels": {"type": "DINT"},
+    "status": {
+      "type": "STRUCT",
+      "fields": {"ok": "BOOL", "fault": "BOOL", "comm_fault": "BOOL", "config_fault": "BOOL"}
+    },
+    "config": {
+      "type": "STRUCT",
+      "fields": {"sample_rate": "TIME", "filter": "DINT", "range": "DINT", "wire_type": "DINT", "burnout": "DINT"}
+    },
+    "points": {"type": "ARRAY OF REF:io/point"}
+  }
+}

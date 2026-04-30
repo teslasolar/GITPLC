@@ -1,0 +1,18 @@
+{
+  "_udt": "Crosswalk_ISA101_ISA18",
+  "_schema": "gitplc/crosswalk/v1",
+  "mappings": [
+    {"from": "ISA101.AlarmIndicator",    "to": "ISA18.AlarmState",     "type": "exact",    "note": "visual representation of alarm state"},
+    {"from": "ISA101.ColorMeaning.Alarm","to": "ISA18.Priority.color", "type": "exact"},
+    {"from": "ISA101.L1.AlarmSummary",   "to": "ISA18.AlarmList",      "type": "semantic", "note": "filtered by site"},
+    {"from": "ISA101.L2.AlarmSummary",   "to": "ISA18.AlarmList",      "type": "semantic", "note": "filtered by area"},
+    {"from": "ISA101.L3.AlarmBanner",    "to": "ISA18.AlarmInstance",   "type": "exact"},
+    {"from": "ISA101.Faceplate.alarms",  "to": "ISA18.AlarmInstance",   "type": "exact"}
+  ],
+  "color_mapping": {
+    "P1_Emergency": "#CC0000",
+    "P2_High":      "#FF6600",
+    "P3_Medium":    "#FFCC00",
+    "P4_Low":       "#00CCCC"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "_udt": "PackML_State",
+  "_layer": 2,
+  "_schema": "gitplc/states/v1",
+  "state_machine": {
+    "name": "PackML",
+    "initial": "Stopped",
+    "states": {
+      "0": "Undefined", "1": "Clearing", "2": "Stopped", "3": "Starting",
+      "4": "Idle", "5": "Suspended", "6": "Execute", "7": "Stopping",
+      "8": "Aborting", "9": "Aborted", "10": "Holding", "11": "Held",
+      "12": "Unholding", "13": "Suspending", "14": "Unsuspending",
+      "15": "Resetting", "16": "Completing", "17": "Complete"
+    },
+    "transitions": [
+      {"from": "Stopped", "to": "Resetting", "trigger": "Reset"},
+      {"from": "Resetting", "to": "Idle", "trigger": "SC"},
+      {"from": "Idle", "to": "Starting", "trigger": "Start"},
+      {"from": "Starting", "to": "Execute", "trigger": "SC"},
+      {"from": "Execute", "to": "Completing", "trigger": "SC"},
+      {"from": "Execute", "to": "Holding", "trigger": "Hold"},
+      {"from": "Execute", "to": "Suspending", "trigger": "Suspend"},
+      {"from": "Held", "to": "Unholding", "trigger": "Unhold"},
+      {"from": "Suspended", "to": "Unsuspending", "trigger": "Unsuspend"},
+      {"from": "*", "to": "Stopping", "trigger": "Stop"},
+      {"from": "*", "to": "Aborting", "trigger": "Abort"},
+      {"from": "Aborted", "to": "Clearing", "trigger": "Clear"}
+    ]
+  },
+  "fields": {
+    "current": {"type": "DINT"},
+    "target": {"type": "DINT"},
+    "last": {"type": "DINT"},
+    "timer": {"type": "TIME"}
+  }
+}

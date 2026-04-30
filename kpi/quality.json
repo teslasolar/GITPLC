@@ -1,0 +1,19 @@
+{
+  "_udt": "QualityKPI",
+  "_layer": 9,
+  "_schema": "gitplc/kpi/v1",
+  "fields": {
+    "first_pass_yield": {"type": "REAL", "unit": "%", "calc": "good_first_time/total_attempted"},
+    "defect_rate": {"type": "REAL", "unit": "%", "calc": "defects/total_units"},
+    "scrap_rate": {"type": "REAL", "unit": "%"},
+    "rework_rate": {"type": "REAL", "unit": "%"},
+    "good_units": {"type": "UDINT"},
+    "total_units": {"type": "UDINT"},
+    "defects": {"type": "UDINT"},
+    "throughput": {"type": "REAL", "unit": "units/hour"},
+    "energy": {
+      "type": "STRUCT",
+      "fields": {"kwh_per_unit": "REAL", "kwh_per_batch": "REAL", "peak_demand": "REAL", "power_factor": "REAL"}
+    }
+  }
+}

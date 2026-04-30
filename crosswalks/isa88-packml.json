@@ -1,0 +1,14 @@
+{
+  "_udt": "Crosswalk_ISA88_PackML",
+  "_schema": "gitplc/crosswalk/v1",
+  "mappings": [
+    {"from": "ISA88.UnitState",      "to": "PackML.StateMachine", "type": "partial", "note": "PackML is subset of S88"},
+    {"from": "ISA88.Phase.RUNNING",  "to": "PackML.EXECUTE",      "type": "exact"},
+    {"from": "ISA88.Phase.HELD",     "to": "PackML.HELD",         "type": "exact"},
+    {"from": "ISA88.Phase.ABORTED",  "to": "PackML.ABORTED",      "type": "exact"},
+    {"from": "ISA88.Phase.IDLE",     "to": "PackML.IDLE",         "type": "exact"},
+    {"from": "ISA88.Phase.STOPPED",  "to": "PackML.STOPPED",      "type": "exact"},
+    {"from": "ISA88.Phase.COMPLETE", "to": "PackML.COMPLETE",     "type": "exact"},
+    {"from": "ISA88.Phase.PAUSED",   "to": "PackML.SUSPENDED",    "type": "semantic"}
+  ]
+}

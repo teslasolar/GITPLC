@@ -1,0 +1,30 @@
+{
+  "_udt": "Downtime",
+  "_layer": 9,
+  "_schema": "gitplc/kpi/v1",
+  "fields": {
+    "categories": {
+      "type": "ENUM",
+      "values": ["Planned", "Unplanned", "Changeover", "Setup", "Breakdown", "Idle"]
+    },
+    "events": {
+      "type": "ARRAY OF STRUCT",
+      "fields": {
+        "start": "DT", "end": "DT",
+        "category": "DINT", "reason": "STRING[80]",
+        "equipment": "PATH"
+      }
+    },
+    "totals": {
+      "type": "STRUCT",
+      "fields": {
+        "planned": "TIME", "unplanned": "TIME", "changeover": "TIME",
+        "setup": "TIME", "breakdown": "TIME", "idle": "TIME"
+      }
+    },
+    "cycle_time": {
+      "type": "STRUCT",
+      "fields": {"ideal": "TIME", "actual": "TIME", "efficiency": "REAL"}
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "_udt": "Converter_Siemens_Export",
+  "_layer": 7,
+  "_schema": "gitplc/converter/v1",
+  "vendor": "siemens",
+  "direction": "export",
+  "target_format": "TIA XML",
+  "emit": "UDT->TIA Portal XML",
+  "mapping": {
+    "UDT:Method": {"to": "FB",  "desc": "method to Function Block"},
+    "UDT":        {"to": "DB",  "desc": "UDT to Data Block"},
+    "Field":      {"to": "Tag"},
+    "Namespace":  {"to": "OB",  "desc": "namespace to Organization Block"},
+    "Method":     {"to": "FC",  "desc": "method to Function"}
+  },
+  "validation": ["type_check", "addr_range", "name_length<=128"]
+}

@@ -1,0 +1,20 @@
+{
+  "_udt": "CM_AnalogIn",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "input": {"type": "INT", "dir": "in", "desc": "raw from AI card"},
+    "raw": {"type": "INT", "desc": "raw preserved"},
+    "value": {"type": "REAL", "desc": "scaled EU"},
+    "scale": {
+      "type": "STRUCT",
+      "fields": {"raw_lo": "INT", "raw_hi": "INT", "eng_lo": "REAL", "eng_hi": "REAL", "clamp": "BOOL"}
+    },
+    "filter": {"type": "STRUCT", "fields": {"enable": "BOOL", "factor": "REAL"}},
+    "alarms": {
+      "type": "STRUCT",
+      "fields": {"hihi": "REF:alarms/instance", "hi": "REF:alarms/instance", "lo": "REF:alarms/instance", "lolo": "REF:alarms/instance"}
+    }
+  }
+}

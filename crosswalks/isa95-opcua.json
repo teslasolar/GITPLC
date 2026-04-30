@@ -1,0 +1,12 @@
+{
+  "_udt": "Crosswalk_ISA95_OPCUA",
+  "_schema": "gitplc/crosswalk/v1",
+  "mappings": [
+    {"from": "ISA95.Equipment",   "to": "OPCUA.Object",   "ns": "isa95", "type": "exact"},
+    {"from": "ISA95.Property",    "to": "OPCUA.Variable",  "type": "exact"},
+    {"from": "ISA95.Capability",  "to": "OPCUA.Method",    "type": "semantic"},
+    {"from": "ISA95.Material",    "to": "OPCUA.Object",   "ns": "isa95", "type": "exact"},
+    {"from": "ISA95.Personnel",   "to": "OPCUA.Object",   "ns": "isa95", "type": "exact"},
+    {"from": "ISA95.Schedule",    "to": "OPCUA.Variable",  "type": "partial"}
+  ]
+}

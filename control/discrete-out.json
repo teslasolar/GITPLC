@@ -1,0 +1,13 @@
+{
+  "_udt": "CM_DiscreteOut",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "cmd": {"type": "BOOL", "desc": "command output"},
+    "fbk": {"type": "BOOL", "desc": "feedback input"},
+    "fbk_time": {"type": "TIME", "default": "T#5s", "desc": "expected feedback time"},
+    "fail_to_state": {"type": "BOOL", "default": false, "desc": "0=off,1=on on fail"},
+    "output": {"type": "BOOL", "dir": "out", "desc": "to physical output"}
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "_udt": "CM_PID",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "sp": {"type": "REAL", "desc": "setpoint"},
+    "pv": {"type": "REAL", "desc": "process variable"},
+    "cv": {"type": "REAL", "desc": "control variable output"},
+    "tune": {
+      "type": "STRUCT",
+      "fields": {"kp": "REAL", "ki": "REAL", "kd": "REAL", "ts": "TIME"}
+    },
+    "limits": {
+      "type": "STRUCT",
+      "fields": {"cv_hi": "REAL", "cv_lo": "REAL", "db": "REAL"}
+    },
+    "sts": {
+      "type": "STRUCT",
+      "fields": {"error": "REAL", "p_term": "REAL", "i_term": "REAL", "d_term": "REAL", "saturated": "BOOL"}
+    },
+    "cfg": {
+      "type": "STRUCT",
+      "fields": {"reverse": "BOOL", "anti_windup": "BOOL", "track_enable": "BOOL", "track_value": "REAL"}
+    }
+  }
+}

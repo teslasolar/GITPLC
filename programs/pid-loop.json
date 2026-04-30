@@ -1,0 +1,23 @@
+{
+  "_udt": "Program_PIDLoop",
+  "_schema": "gitplc/program/v1",
+  "name": "PID Control Loop",
+  "desc": "Standard PID loop with analog input, PID controller, and analog output",
+  "requires": ["control/analog-in", "control/analog-out", "control/pid"],
+  "inputs": {
+    "sensor": {"type": "REF:control/analog-in", "desc": "process variable input"},
+    "sp_source": {"type": "REAL", "desc": "setpoint from HMI or recipe"}
+  },
+  "outputs": {
+    "actuator": {"type": "REF:control/analog-out", "desc": "control output"}
+  },
+  "controller": {"type": "REF:control/pid"},
+  "logic": [
+    "pid.pv := sensor.value",
+    "pid.sp := sp_source",
+    "CALL PID_EXECUTE(pid)",
+    "actuator.sp := pid.cv",
+    "IF pid.sts.saturated THEN WARN 'PID saturated'"
+  ],
+  "tags": ["pid", "analog", "control-loop"]
+}

@@ -1,0 +1,21 @@
+{
+  "_udt": "CM_Valve",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "cmd": {"type": "STRUCT", "fields": {"open": "BOOL", "close": "BOOL"}},
+    "sts": {
+      "type": "STRUCT",
+      "fields": {"opened": "BOOL", "closed": "BOOL", "transit": "BOOL", "faulted": "BOOL"}
+    },
+    "cfg": {
+      "type": "STRUCT",
+      "fields": {"open_time": "TIME", "close_time": "TIME", "fail_pos": "DINT"}
+    },
+    "io": {
+      "type": "STRUCT",
+      "fields": {"open_cmd": "BOOL:out", "close_cmd": "BOOL:out", "open_fbk": "BOOL:in", "close_fbk": "BOOL:in"}
+    }
+  }
+}

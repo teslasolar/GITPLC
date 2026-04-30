@@ -1,0 +1,17 @@
+{
+  "_udt": "CM_AnalogOut",
+  "_layer": 3,
+  "_schema": "gitplc/control/v1",
+  "_base": "CM_Base",
+  "fields": {
+    "sp": {"type": "REAL", "desc": "setpoint EU"},
+    "value": {"type": "REAL", "desc": "actual output EU"},
+    "output": {"type": "INT", "dir": "out", "desc": "to AO card"},
+    "scale": {
+      "type": "STRUCT",
+      "fields": {"eng_lo": "REAL", "eng_hi": "REAL", "raw_lo": "INT", "raw_hi": "INT"}
+    },
+    "ramp": {"type": "STRUCT", "fields": {"enable": "BOOL", "rate": "REAL"}},
+    "limits": {"type": "STRUCT", "fields": {"lo": "REAL", "hi": "REAL"}}
+  }
+}

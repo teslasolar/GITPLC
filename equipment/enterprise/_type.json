@@ -1,0 +1,14 @@
+{
+  "_udt": "Enterprise",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "Enterprise",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "desc": {"type": "STRING[80]"},
+    "sites": {"type": "ARRAY OF Site", "desc": "child sites"},
+    "sts": {"type": "DINT", "enum": {"0": "Offline", "1": "Online", "2": "Maintenance"}},
+    "kpis": {"type": "REF:kpi/oee"}
+  }
+}

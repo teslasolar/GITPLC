@@ -1,0 +1,18 @@
+{
+  "_udt": "Converter_Siemens_Import",
+  "_layer": 7,
+  "_schema": "gitplc/converter/v1",
+  "vendor": "siemens",
+  "direction": "import",
+  "source_formats": [".zap16", ".xml"],
+  "parse": "XML->blocks->emit UDT",
+  "mapping": {
+    "FB":  {"to": "UDT:Method", "desc": "Function Block to UDT method"},
+    "DB":  {"to": "UDT",        "desc": "Data Block to UDT"},
+    "UDT": {"to": "UDT",        "desc": "Siemens UDT to universal"},
+    "Tag": {"to": "Field"},
+    "OB":  {"to": "Namespace",  "desc": "Organization Block to namespace"},
+    "FC":  {"to": "Method",     "desc": "Function to method"}
+  },
+  "addr_format": "%[area][byte].[bit]"
+}

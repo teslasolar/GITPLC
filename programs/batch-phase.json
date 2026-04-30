@@ -1,0 +1,22 @@
+{
+  "_udt": "Program_BatchPhase",
+  "_schema": "gitplc/program/v1",
+  "name": "Batch Phase Template",
+  "desc": "ISA-88 phase state machine with parameter loading and reporting",
+  "requires": ["batch/phase", "batch/states", "equipment/states/packml"],
+  "inputs": {
+    "phase": {"type": "REF:batch/phase"},
+    "cmd": {"type": "DINT", "desc": "phase command from batch engine"}
+  },
+  "logic": [
+    "CASE phase.state:",
+    "  IDLE: IF cmd=START THEN load_params; state:=RUNNING",
+    "  RUNNING: execute_step(phase.step); IF done THEN state:=COMPLETE",
+    "  HOLDING: save_state; state:=HELD",
+    "  HELD: IF cmd=RESTART THEN restore_state; state:=RUNNING",
+    "  STOPPING: cleanup; state:=STOPPED",
+    "  ABORTING: emergency_stop; state:=ABORTED",
+    "  COMPLETE: write_report"
+  ],
+  "tags": ["batch", "phase", "isa-88"]
+}

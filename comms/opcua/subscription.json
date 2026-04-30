@@ -1,0 +1,24 @@
+{
+  "_udt": "OPC_Subscription",
+  "_layer": 6,
+  "_schema": "gitplc/comms/opcua/v1",
+  "fields": {
+    "id": {"type": "UDINT"},
+    "publishing_interval": {"type": "TIME"},
+    "lifetime": {"type": "TIME"},
+    "max_keepalive": {"type": "DINT"},
+    "priority": {"type": "USINT"},
+    "enabled": {"type": "BOOL"},
+    "monitored_items": {
+      "type": "ARRAY OF STRUCT",
+      "fields": {
+        "id": "UDINT",
+        "node": "REF:comms/opcua/node",
+        "sampling_interval": "TIME",
+        "queue_size": "UDINT",
+        "discard_oldest": "BOOL",
+        "filter": "REF|null"
+      }
+    }
+  }
+}

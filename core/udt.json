@@ -1,0 +1,24 @@
+{
+  "_udt": "GitPLC_Type",
+  "_layer": 0,
+  "_schema": "gitplc/meta/v1",
+  "fields": {
+    "id": {"type": "UUID", "desc": "unique type identifier"},
+    "name": {"type": "STRING", "desc": "type name"},
+    "vendor": {"type": "STRING|null", "desc": "null=universal"},
+    "base": {"type": "TypeRef|null", "desc": "inheritance"},
+    "version": {"type": "SemVer"},
+    "fields": {"type": "ARRAY OF Field"},
+    "methods": {"type": "ARRAY OF Method|null"},
+    "size_bits": {"type": "INT"},
+    "alignment": {"type": "INT"},
+    "endian": {"type": "ENUM", "values": ["LE", "BE"]},
+    "meta": {"type": "STRUCT", "fields": ["desc", "author", "created", "modified"]}
+  },
+  "sub_types": {
+    "Field": ["name:str", "type:TypeRef", "offset_bits:int", "size_bits:int", "array_dims:[int]|null", "initial:any|null", "attrs:FieldAttrs"],
+    "FieldAttrs": ["retain:bool", "constant:bool", "persistent:bool", "opc_access:RO|RW|WO|None", "eng_unit:str|null", "eng_lo:num|null", "eng_hi:num|null"],
+    "Method": ["name:str", "access:PUBLIC|PRIVATE|PROTECTED", "inputs:[{name,type}]", "outputs:[{name,type}]", "return:TypeRef|null"],
+    "TypeRef": "BOOL|SINT|INT|DINT|LINT|REAL|LREAL|STRING|TIME|ARRAY|STRUCT|ENUM|FB"
+  }
+}

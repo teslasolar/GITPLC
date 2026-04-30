@@ -1,0 +1,20 @@
+{
+  "_udt": "AlarmMetrics",
+  "_layer": 4,
+  "_schema": "gitplc/alarms/v1",
+  "_standard": "ISA-18.2",
+  "fields": {
+    "alarm_rate": {"type": "REAL", "unit": "alarms/operator/hour", "target": "<6 avg, <12 peak"},
+    "flood_rate": {"type": "REAL", "desc": ">10 alarms in 10 min"},
+    "stale_count": {"type": "UDINT", "desc": "active >24hr"},
+    "chattering": {"type": "UDINT", "desc": ">3 transitions/min"},
+    "total_active": {"type": "UDINT"},
+    "unacked": {"type": "UDINT"},
+    "by_priority": {"type": "ARRAY[4] OF UDINT", "desc": "P1,P2,P3,P4"},
+    "bad_actors": {"type": "ARRAY[10] OF STRING[40]", "desc": "top 10 most frequent"},
+    "summary": {
+      "type": "STRUCT",
+      "fields": {"most_recent": "REF:alarms/instance", "oldest_unacked": "REF:alarms/instance"}
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_udt": "OEE",
+  "_layer": 9,
+  "_schema": "gitplc/kpi/v1",
+  "fields": {
+    "availability": {"type": "REAL", "unit": "%", "calc": "run_time/(run_time+downtime)", "target": ">90%"},
+    "performance": {"type": "REAL", "unit": "%", "calc": "actual_rate/ideal_rate", "target": ">95%"},
+    "quality": {"type": "REAL", "unit": "%", "calc": "good_units/total_units", "target": ">99%"},
+    "oee": {"type": "REAL", "unit": "%", "calc": "availability*performance*quality", "target": ">85%"},
+    "run_time": {"type": "TIME"},
+    "downtime": {"type": "TIME"},
+    "actual_rate": {"type": "REAL"},
+    "ideal_rate": {"type": "REAL"},
+    "good_units": {"type": "UDINT"},
+    "total_units": {"type": "UDINT"},
+    "mtbf": {"type": "TIME", "calc": "total_uptime/failure_count"},
+    "mttr": {"type": "TIME", "calc": "total_downtime/failure_count"}
+  }
+}

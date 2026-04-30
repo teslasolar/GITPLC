@@ -1,0 +1,21 @@
+{
+  "_udt": "Program_MotorStartStop",
+  "_schema": "gitplc/program/v1",
+  "name": "Motor Start/Stop",
+  "desc": "Basic motor start-stop with interlock, feedback, and fault detection",
+  "requires": ["control/motor", "control/discrete-in", "control/discrete-out"],
+  "inputs": {
+    "start_pb": {"type": "REF:control/discrete-in", "desc": "start pushbutton"},
+    "stop_pb": {"type": "REF:control/discrete-in", "desc": "stop pushbutton"},
+    "interlock": {"type": "BOOL", "desc": "true=OK to run"}
+  },
+  "outputs": {
+    "motor": {"type": "REF:control/motor"}
+  },
+  "logic": [
+    "IF stop_pb.value OR NOT interlock THEN motor.cmd.stop:=TRUE",
+    "IF start_pb.value AND interlock AND NOT motor.sts.faulted THEN motor.cmd.start:=TRUE",
+    "IF motor.sts.running AND NOT motor.io.run_fbk AFTER motor.cfg.start_delay THEN motor.fault.active:=TRUE"
+  ],
+  "tags": ["motor", "start-stop", "interlock"]
+}

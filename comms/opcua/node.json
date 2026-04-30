@@ -1,0 +1,22 @@
+{
+  "_udt": "OPC_Node",
+  "_layer": 6,
+  "_schema": "gitplc/comms/opcua/v1",
+  "_standard": "OPC-UA",
+  "fields": {
+    "node_id": {"type": "STRING"},
+    "browse_name": {"type": "STRING"},
+    "display_name": {"type": "STRING"},
+    "node_class": {
+      "type": "ENUM",
+      "values": ["Object", "ObjectType", "Variable", "VariableType", "Method", "View", "DataType", "ReferenceType"]
+    },
+    "type_def": {"type": "REF|null"},
+    "parent": {"type": "REF|null"}
+  },
+  "address_space": {
+    "Root": ["Objects", "Types", "Views"],
+    "Objects": ["Server", "DeviceSet", "Aliases"],
+    "Types": ["ObjectTypes", "VariableTypes", "DataTypes", "ReferenceTypes"]
+  }
+}

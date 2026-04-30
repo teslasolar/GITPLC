@@ -1,0 +1,26 @@
+{
+  "_udt": "AlarmState",
+  "_layer": 4,
+  "_schema": "gitplc/alarms/v1",
+  "_standard": "ISA-18.2",
+  "fields": {
+    "current": {"type": "DINT"},
+    "bits": {
+      "active": "BOOL", "acked": "BOOL", "shelved": "BOOL",
+      "suppressed": "BOOL", "disabled": "BOOL"
+    }
+  },
+  "enum": {
+    "0": "NORM",        "1": "UNACK",
+    "2": "ACKED",       "3": "RTN_UNACK",
+    "4": "SHELVED",     "5": "SUPPRESSED",
+    "6": "DISABLED"
+  },
+  "lifecycle": [
+    {"from": "NORM",      "to": "UNACK",     "trigger": "condition_true"},
+    {"from": "UNACK",     "to": "ACKED",     "trigger": "ack"},
+    {"from": "ACKED",     "to": "NORM",      "trigger": "condition_false"},
+    {"from": "UNACK",     "to": "RTN_UNACK", "trigger": "condition_false"},
+    {"from": "RTN_UNACK", "to": "NORM",      "trigger": "ack"}
+  ]
+}

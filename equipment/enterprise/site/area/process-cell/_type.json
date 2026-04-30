@@ -1,0 +1,17 @@
+{
+  "_udt": "ProcessCell",
+  "_layer": 2,
+  "_schema": "gitplc/equipment/v1",
+  "_level": "ProcessCell",
+  "_parent": "Area",
+  "fields": {
+    "id": {"type": "UUID"},
+    "name": {"type": "STRING[40]"},
+    "path": {"type": "PATH", "format": "Enterprise/Site/Area/ProcessCell"},
+    "units": {"type": "ARRAY OF Unit"},
+    "coordination": {"type": "REF", "desc": "coordination control logic"},
+    "state": {"type": "REF:equipment/states/packml"},
+    "mode": {"type": "REF:equipment/states/modes"},
+    "batch": {"type": "REF:batch/batch|null", "desc": "active batch"}
+  }
+}

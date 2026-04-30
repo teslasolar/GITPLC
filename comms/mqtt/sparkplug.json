@@ -1,0 +1,22 @@
+{
+  "_udt": "Sparkplug",
+  "_layer": 7,
+  "_schema": "gitplc/comms/mqtt/v1",
+  "topics": {
+    "NBIRTH": "spBv1.0/{group}/NBIRTH/{edge}",
+    "NDEATH": "spBv1.0/{group}/NDEATH/{edge}",
+    "DBIRTH": "spBv1.0/{group}/DBIRTH/{edge}/{device}",
+    "DDEATH": "spBv1.0/{group}/DDEATH/{edge}/{device}",
+    "NDATA":  "spBv1.0/{group}/NDATA/{edge}",
+    "DDATA":  "spBv1.0/{group}/DDATA/{edge}/{device}",
+    "NCMD":   "spBv1.0/{group}/NCMD/{edge}",
+    "DCMD":   "spBv1.0/{group}/DCMD/{edge}/{device}"
+  },
+  "payload": {
+    "timestamp": "UINT64",
+    "metrics": "ARRAY OF {name:str, alias:uint64, timestamp:uint64, datatype:SparkplugType, value:any}",
+    "seq": "UINT64"
+  },
+  "data_types": ["Int8","Int16","Int32","Int64","UInt8","UInt16","UInt32","UInt64","Float","Double","Boolean","String","DateTime","UUID","Bytes","Template"],
+  "rules": ["R1:NBIRTH before NDATA", "R2:seq 0-255 wrap", "R3:LWT=NDEATH", "R4:alias for bandwidth", "R5:store-forward on disconnect"]
+}

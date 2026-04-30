@@ -1,0 +1,15 @@
+{
+  "_udt": "AlarmPriority",
+  "_layer": 4,
+  "_schema": "gitplc/alarms/v1",
+  "_standard": "ISA-18.2",
+  "priorities": {
+    "1": {"name": "Emergency", "response": "Immediate", "time": "<1min", "color": "#CC0000", "sound": "Continuous"},
+    "2": {"name": "High",      "response": "Prompt",    "time": "<10min","color": "#FF6600", "sound": "Fast"},
+    "3": {"name": "Medium",    "response": "Timely",    "time": "<1hr",  "color": "#FFCC00", "sound": "Slow"},
+    "4": {"name": "Low",       "response": "Awareness", "time": "Shift", "color": "#00CCCC", "sound": "None"}
+  },
+  "distribution_target": {
+    "P1": "<5%", "P2": "<15%", "P3": "<25%", "P4": "<55%"
+  }
+}

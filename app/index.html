@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🔧 GitPLC — Universal PLC Namespace</title>
+<link rel="stylesheet" href="ui/style.css">
+</head>
+<body>
+<div class="hdr">
+  <span class="logo">🔧 GitPLC</span>
+  <span class="b">│</span>
+  <span id="nav-tabs">
+    <span class="tab active" data-tab="explorer" onclick="switchView('explorer')">📂 Explorer</span>
+    <span class="tab" data-tab="programs" onclick="switchView('programs')">⚙ Programs</span>
+    <span class="tab" data-tab="alarms" onclick="switchView('alarms')">🚨 Alarms</span>
+    <span class="tab" data-tab="kpi" onclick="switchView('kpi')">📊 KPI</span>
+    <span class="tab" data-tab="tags" onclick="switchView('tags')">🏷 Tags</span>
+  </span>
+  <span style="flex:1"></span>
+  <span id="status" class="ok">loading...</span>
+</div>
+
+<div class="dock">
+  <div class="side" id="tree-panel"></div>
+  <div class="main" id="main-panel"></div>
+  <div class="detail" id="detail-panel"></div>
+</div>
+
+<div class="ftr">
+  <span>🔧 GitPLC · Universal PLC Namespace UDT Transfer Layer</span>
+  <span style="flex:1"></span>
+  <span id="stats"></span>
+</div>
+
+<script src="engine/tag-db.js"></script>
+<script src="engine/udt-loader.js"></script>
+<script src="engine/tree.js"></script>
+<script src="ui/views.js"></script>
+<script src="ui/detail.js"></script>
+<script src="app.js"></script>
+</body></html>
