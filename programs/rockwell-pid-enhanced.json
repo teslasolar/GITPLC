@@ -1,0 +1,28 @@
+{
+  "_udt": "Program_RockwellPID",
+  "_schema": "gitplc/program/v1",
+  "vendor": "rockwell",
+  "desc": "Enhanced PID with auto-tune, tracking, anti-windup",
+  "block": "PIDE",
+  "inputs": [
+    "PV",
+    "SP",
+    "FF",
+    "TRK_Val",
+    "TRK_En"
+  ],
+  "outputs": [
+    "CV",
+    "PV_Pct",
+    "SP_Pct",
+    "Error",
+    "InAuto"
+  ],
+  "tuning": [
+    "Kp",
+    "Ki",
+    "Kd",
+    "CVHi",
+    "CVLo"
+  ]
+}
