@@ -1,0 +1,25 @@
+{
+  "_udt": "Program_AsswayTankFarm",
+  "_schema": "gitplc/program/v1",
+  "site": "assway",
+  "vendor": "rockwell",
+  "desc": "Tank farm batch control — fill/settle/transfer sequences",
+  "phases": [
+    "Fill",
+    "Heat",
+    "Settle",
+    "Transfer",
+    "CIP"
+  ],
+  "tanks": [
+    "TK001",
+    "TK002",
+    "TK003"
+  ],
+  "interlocks": [
+    "HiHi_Level",
+    "LoLo_Level",
+    "Hi_Temp",
+    "Hi_Pressure"
+  ]
+}
