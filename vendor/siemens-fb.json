@@ -1,0 +1,26 @@
+{
+  "_udt": "Siemens_FB",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "siemens",
+  "desc": "Function Block wrapper for S7-1500 / TIA Portal",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "fb_number": {
+      "type": "INT"
+    },
+    "instance_db": {
+      "type": "INT"
+    },
+    "in_params": {
+      "type": "ARRAY OF Field"
+    },
+    "out_params": {
+      "type": "ARRAY OF Field"
+    },
+    "static": {
+      "type": "ARRAY OF Field"
+    }
+  }
+}
