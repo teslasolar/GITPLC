@@ -4,7 +4,7 @@
   "branches": {
     "main": {
       "desc": "Base UDT library — universal primitives + ISA templates",
-      "children": ["plc-rockwell", "plc-siemens", "plc-codesys"],
+      "children": ["plc-rockwell", "plc-siemens", "plc-codesys", "plc-konomioke"],
       "auto_inherit": true
     },
     "plc-rockwell": {
@@ -33,6 +33,14 @@
       "parent": "plc-rockwell",
       "site": "assway",
       "children": []
+    },
+    "plc-konomioke": {
+      "desc": "Konomioke P2P karaoke — rooms, voices, audio fabric, vagal phonemes as ISA-88 equipment",
+      "parent": "main",
+      "site": "konomioke",
+      "children": [],
+      "primes": [2, 3, 5, 7, 11, 13, 17],
+      "extends": ["core/udt", "equipment/*", "alarms/*"]
     }
   }
 }
