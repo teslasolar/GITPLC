@@ -1,0 +1,40 @@
+{
+  "_udt": "Konomioke_AudioFabric",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 5,
+  "desc": "Vagal phoneme engine — real-time voice analysis",
+  "fields": {
+    "phoneme": {
+      "type": "STRING",
+      "desc": "Current detected phoneme"
+    },
+    "vagal_branch": {
+      "type": "ENUM",
+      "values": [
+        "dorsal",
+        "ventral",
+        "sympathetic"
+      ]
+    },
+    "coherence": {
+      "type": "REAL",
+      "eng_lo": 0,
+      "eng_hi": 1,
+      "desc": "Room vocal coherence"
+    },
+    "hz": {
+      "type": "REAL",
+      "desc": "Fundamental frequency"
+    },
+    "formant_1": {
+      "type": "REAL"
+    },
+    "formant_2": {
+      "type": "REAL"
+    },
+    "ring_state": {
+      "type": "ARRAY",
+      "desc": "7-ring bloom exponents"
+    }
+  }
+}
