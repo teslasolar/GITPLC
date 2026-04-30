@@ -1,0 +1,49 @@
+{
+  "_udt": "Program_RoomFSM",
+  "_schema": "gitplc/program/v1",
+  "site": "konomioke",
+  "desc": "Room state machine — IDLE→LOBBY→SINGING→PAUSED→ENDED",
+  "states": [
+    "IDLE",
+    "LOBBY",
+    "SINGING",
+    "PAUSED",
+    "ENDED"
+  ],
+  "transitions": [
+    {
+      "from": "IDLE",
+      "to": "LOBBY",
+      "trigger": "create_room"
+    },
+    {
+      "from": "LOBBY",
+      "to": "SINGING",
+      "trigger": "start_track"
+    },
+    {
+      "from": "SINGING",
+      "to": "PAUSED",
+      "trigger": "pause"
+    },
+    {
+      "from": "PAUSED",
+      "to": "SINGING",
+      "trigger": "resume"
+    },
+    {
+      "from": "SINGING",
+      "to": "LOBBY",
+      "trigger": "track_end"
+    },
+    {
+      "from": [
+        "LOBBY",
+        "SINGING",
+        "PAUSED"
+      ],
+      "to": "ENDED",
+      "trigger": "close_room"
+    }
+  ]
+}
