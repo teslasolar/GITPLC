@@ -1,0 +1,19 @@
+{
+  "_udt": "Codesys_DataTypes",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "codesys",
+  "type_map": {
+    "BOOL": "BOOL",
+    "SINT": "SINT",
+    "INT": "INT",
+    "DINT": "DINT",
+    "LINT": "LINT",
+    "REAL": "REAL",
+    "LREAL": "LREAL",
+    "STRING": "STRING",
+    "TIME": "TIME",
+    "TON": "TIMER",
+    "CTU": "COUNTER",
+    "PID": "PID"
+  }
+}
