@@ -1,0 +1,43 @@
+{
+  "_udt": "Konomioke_TrackEngine",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 11,
+  "desc": "Track loader, lyrics sync, queue system",
+  "fields": {
+    "track_id": {
+      "type": "STRING"
+    },
+    "title": {
+      "type": "STRING"
+    },
+    "artist": {
+      "type": "STRING"
+    },
+    "duration_ms": {
+      "type": "INT"
+    },
+    "position_ms": {
+      "type": "INT"
+    },
+    "lyrics_format": {
+      "type": "ENUM",
+      "values": [
+        "LRC",
+        "SRT",
+        "NONE"
+      ]
+    },
+    "queue_depth": {
+      "type": "INT"
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "IDLE",
+        "LOADING",
+        "PLAYING",
+        "PAUSED"
+      ]
+    }
+  }
+}
