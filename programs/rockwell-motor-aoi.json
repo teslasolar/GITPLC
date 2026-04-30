@@ -1,0 +1,25 @@
+{
+  "_udt": "Program_RockwellMotor",
+  "_schema": "gitplc/program/v1",
+  "vendor": "rockwell",
+  "desc": "Rockwell AOI motor starter with interlock + permissive logic",
+  "aoi": "Motor_Starter_v3",
+  "inputs": [
+    "Run_Cmd",
+    "Jog_Cmd",
+    "E_Stop",
+    "Overload",
+    "Aux_Contact"
+  ],
+  "outputs": [
+    "Running",
+    "Faulted",
+    "Ready",
+    "RunTime_Hrs"
+  ],
+  "alarms": [
+    "Overload",
+    "Comm_Fail",
+    "RunTime_Hi"
+  ]
+}
