@@ -1,0 +1,38 @@
+{
+  "_schema": "gitplc/branches/v1",
+  "root": "main",
+  "branches": {
+    "main": {
+      "desc": "Base UDT library — universal primitives + ISA templates",
+      "children": ["plc-rockwell", "plc-siemens", "plc-codesys"],
+      "auto_inherit": true
+    },
+    "plc-rockwell": {
+      "desc": "Allen-Bradley ControlLogix/CompactLogix vendor extensions",
+      "parent": "main",
+      "vendor": "rockwell",
+      "children": ["plc-rockwell-assway"],
+      "extends": ["core/udt", "control/*", "equipment/*", "alarms/*"]
+    },
+    "plc-siemens": {
+      "desc": "Siemens S7-1500/TIA Portal vendor extensions",
+      "parent": "main",
+      "vendor": "siemens",
+      "children": [],
+      "extends": ["core/udt", "control/*", "equipment/*", "alarms/*"]
+    },
+    "plc-codesys": {
+      "desc": "CODESYS / IEC 61131-3 vendor extensions",
+      "parent": "main",
+      "vendor": "codesys",
+      "children": [],
+      "extends": ["core/udt", "control/*", "equipment/*", "alarms/*"]
+    },
+    "plc-rockwell-assway": {
+      "desc": "Assway demo plant — Rockwell instance with site-specific programs",
+      "parent": "plc-rockwell",
+      "site": "assway",
+      "children": []
+    }
+  }
+}
