@@ -49,4 +49,7 @@
   switchView(defaultView);
   if(typeof applyLiveValues==='function'){applyLiveValues();setInterval(applyLiveValues,30000)}
   if(typeof initHeartbeat==='function')initHeartbeat();
+
+  // East dock — status dashboard, refreshes every 5s
+  if(typeof renderEastDock==='function'){renderEastDock();setInterval(renderEastDock,5000)}
 })();
