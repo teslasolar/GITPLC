@@ -1,0 +1,31 @@
+{
+  "_udt": "Rockwell_AOI",
+  "_schema": "gitplc/vendor/v1",
+  "vendor": "rockwell",
+  "desc": "Add-On Instruction wrapper for ControlLogix",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "routine": {
+      "type": "STRING"
+    },
+    "scan_mode": {
+      "type": "ENUM",
+      "values": [
+        "Continuous",
+        "Periodic",
+        "Event"
+      ]
+    },
+    "in_params": {
+      "type": "ARRAY OF Field"
+    },
+    "out_params": {
+      "type": "ARRAY OF Field"
+    },
+    "local_tags": {
+      "type": "ARRAY OF Field"
+    }
+  }
+}
