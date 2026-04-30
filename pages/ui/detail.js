@@ -4,10 +4,10 @@ function selectUDT(path){
   var el=document.getElementById('detail-panel');
   el.innerHTML='<h3 style="color:var(--ig);font-size:10px">'+(u._udt||path)+'</h3>'+
     (u.extends?'<div style="font-size:7px;color:var(--wr)">extends: '+u.extends+'</div>':'')+
-    (u.fields?'<div style="margin-top:6px">'+u.fields.map(function(f){
+    (u.fields&&Array.isArray(u.fields)?'<div style="margin-top:6px">'+u.fields.map(function(f){
       return '<div class="field-row"><span class="field-name">'+f.name+'</span><span class="field-type">'+f.type+'</span><span class="field-desc">'+(f.desc||f.unit||'')+'</span></div>'
     }).join('')+'</div>':'')+
-    (u.states?'<div style="margin-top:6px">'+u.states.map(function(s,i){
+    (u.states&&Array.isArray(u.states)?'<div style="margin-top:6px">'+u.states.map(function(s,i){
       return '<span class="sm-state">'+(s.name||s)+'</span>'+(i<u.states.length-1?'<span class="sm-arrow">→</span>':'')}).join('')+'</div>':'')+
     '<pre style="margin-top:8px;background:var(--bg);padding:4px;border-radius:2px;font-size:6px;color:var(--gd);max-height:200px;overflow:auto">'+
     JSON.stringify(u,null,2).replace(/</g,'&lt;')+'</pre>';
