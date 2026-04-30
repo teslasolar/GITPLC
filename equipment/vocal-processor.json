@@ -1,0 +1,30 @@
+{
+  "_udt": "Konomioke_VocalProcessor",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 7,
+  "desc": "Pitch detection, harmony generation, mixing",
+  "fields": {
+    "pitch_hz": {
+      "type": "REAL"
+    },
+    "pitch_note": {
+      "type": "STRING"
+    },
+    "harmony_enabled": {
+      "type": "BOOL"
+    },
+    "harmony_interval": {
+      "type": "INT"
+    },
+    "reverb": {
+      "type": "REAL",
+      "eng_lo": 0,
+      "eng_hi": 1
+    },
+    "mix_level": {
+      "type": "REAL",
+      "eng_lo": 0,
+      "eng_hi": 1
+    }
+  }
+}
