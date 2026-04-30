@@ -21,10 +21,12 @@ function toggleMode(){
     btn.style.borderColor=VIEW_MODE==='auto'?'var(--b2)':'var(--gd)';
   }
   // Re-render tree
-  if(typeof renderSVGTree==='function')renderSVGTree(document.getElementById('tree-panel'));
+  var treeEl=document.getElementById('west-dock')||document.getElementById('tree-panel');
+  if(treeEl){if(VIEW_MODE==='repo')renderRepoTree(treeEl);else if(typeof renderSVGTree==='function')renderSVGTree(treeEl)}
+  if(typeof renderEastDock==='function')renderEastDock();
   // Re-render current view
-  var activeTab=document.querySelector('.tab.active');
-  if(activeTab)switchView(activeTab.dataset.tab);
+  var activeTab=document.querySelector('[data-tab].active')||document.querySelector('.tab.active');
+  if(activeTab&&activeTab.dataset.tab)switchView(activeTab.dataset.tab);
 }
 
 // Override tree rendering based on mode

@@ -15,10 +15,15 @@ function switchView(tab){
     else if(tab==='tags')_populateTags();
     else if(tab==='stats')_populateStats();
   }).catch(function(){
-    // Fallback: render inline
-    if(tab==='explorer')renderExplorerInline(main);
-    else if(tab==='tags')renderTagsInline(main);
-    else main.innerHTML='<div style="color:var(--t2)">view not found: '+viewFile+'</div>';
+    // Fallback: render inline if HTML template missing
+    if(tab==='overview'){main.innerHTML='<div id="ov-gauges"></div><div id="ov-translation"></div><div id="ov-equipment"></div><div id="ov-packml"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="view-panel"><div class="view-panel-head" style="color:var(--er)">🚨 Alarms</div><div id="ov-alarm-list"></div></div><div class="view-panel"><div class="view-panel-head" style="color:var(--ig)">⚙ Programs</div><div id="ov-program-list"></div></div></div><div class="view-panel" style="margin-top:8px"><div id="ov-repo-stats"></div></div>';_populateOverview()}
+    else if(tab==='explorer'){renderExplorerInline(main)}
+    else if(tab==='alarms'){main.innerHTML='<div class="view-panel" style="margin-bottom:8px"><div class="view-panel-head" style="color:var(--er)">🚨 Live Alarms</div><div id="alarm-live-list"></div></div><div class="view-panel"><div class="view-panel-head" style="color:var(--wr)">📐 ISA-18.2</div><div id="alarm-sm"></div><div id="alarm-config" style="margin-top:6px"></div></div>';_populateAlarms()}
+    else if(tab==='kpi'){main.innerHTML='<div id="kpi-gauges" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px"></div><div id="kpi-oee-detail"></div>';_populateKPIs()}
+    else if(tab==='programs'){main.innerHTML='<div id="program-list"></div>';_populatePrograms()}
+    else if(tab==='tags'){renderTagsInline(main)}
+    else if(tab==='stats'){main.innerHTML='<div class="stats-row" id="repo-stats"></div><div id="repo-tree"></div><div id="repo-badges" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:8px"></div>';_populateStats()}
+    else main.innerHTML='<div style="color:var(--t2)">view: '+tab+'</div>';
   });
 }
 
