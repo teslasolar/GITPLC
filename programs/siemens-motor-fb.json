@@ -1,0 +1,21 @@
+{
+  "_udt": "Program_SiemensMotor",
+  "_schema": "gitplc/program/v1",
+  "vendor": "siemens",
+  "desc": "S7-1500 motor control FB with safety integration",
+  "fb": "FB_MotorCtrl",
+  "inputs": [
+    "bStart",
+    "bStop",
+    "bReset",
+    "bEStop",
+    "bOverload"
+  ],
+  "outputs": [
+    "bRunning",
+    "bFault",
+    "bReady",
+    "rRunHours"
+  ],
+  "safety": "F-DI / F-DO integration"
+}
