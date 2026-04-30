@@ -13,8 +13,9 @@
     alarmSum.innerHTML=[1,2,3,4].filter(function(p){return c[p]}).map(function(p){
       return '<span style="color:'+PRI_COLOR[p]+'">'+PRI_ICON[p]+c[p]+'</span>'}).join(' ')}
 
-  // SVG tree with layer icons + repo stats
-  if(typeof renderSVGTree==='function')renderSVGTree(document.getElementById('tree-panel'));
+  // SVG tree — mode-aware (auto=equipment icons, repo=git dirs)
+  if(typeof renderSVGTreeMode==='function')renderSVGTreeMode(document.getElementById('tree-panel'));
+  else if(typeof renderSVGTree==='function')renderSVGTree(document.getElementById('tree-panel'));
 
   // Apply dynamic index from _index tag (tabs, theme, footer)
   if(typeof applyIndexTag==='function')applyIndexTag();

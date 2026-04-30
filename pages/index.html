@@ -12,6 +12,8 @@
   <span id="plc-state" style="color:#42e898;font-size:8px">● RUN</span>
   <span class="b">│</span>
   <span id="alarm-summary" style="font-size:8px"></span>
+  <span class="b">│</span>
+  <span id="mode-toggle" onclick="toggleMode()" style="cursor:pointer;font-size:8px;padding:2px 8px;border:1px solid var(--b2);border-radius:4px;color:var(--ig);transition:all .15s">🏭 AUTO</span>
   <span style="flex:1"></span>
   <span class="tab active" data-tab="overview" onclick="switchView('overview')">🏠</span>
   <span class="tab" data-tab="explorer" onclick="switchView('explorer')">📂</span>
@@ -48,6 +50,7 @@
 <script src="engine/dynamic-index.js"></script>
 <script src="engine/live-values.js"></script>
 <script src="engine/heartbeat.js"></script>
+<script src="engine/mode-toggle.js"></script>
 <script src="ui/views.js"></script>
 <script src="ui/detail.js"></script>
 <script src="app.js"></script>

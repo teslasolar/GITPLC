@@ -24,8 +24,11 @@ function switchView(tab){
 
 function _populateExplorer(){
   var el=document.getElementById('explorer-stats');
-  if(el){var k=Object.keys(getAllUDTs()).length;var t=Object.keys(PLC_TAGS.tags).length;
-    el.innerHTML=stat(k,'UDTs','var(--ig)')+stat(t,'Tags','var(--gd)')+stat(UDT_PATHS.length,'Files','var(--wr)')}
+  var k=Object.keys(getAllUDTs()).length,t=Object.keys(PLC_TAGS.tags).length;
+  if(el){
+    if(VIEW_MODE==='repo')el.innerHTML=stat(k,'files','#888')+stat(t,'issues','#888')+stat(UDT_PATHS.length,'JSON','#888');
+    else el.innerHTML=stat(k,'UDTs','var(--ig)')+stat(t,'Tags','var(--gd)')+stat(UDT_PATHS.length,'Types','var(--wr)');
+  }
   loadAllTemplates();
 }
 function _populatePrograms(){
@@ -76,9 +79,12 @@ function renderTagsInline(el){
 }
 function _populateOverview(){
   if(typeof applyLiveValues==='function')applyLiveValues();
-  // Gauges
+  // Gauges — automation vs repo mode
   var g=document.getElementById('ov-gauges');
-  if(g&&!g.innerHTML)g.innerHTML=svgGauge('OEE',87,100,'#42e898','%')+svgGauge('Avail',92,100,'#38b5f9','%')+svgGauge('Perf',96,100,'#d4a94a','%')+svgGauge('Qual',99,100,'#a080ff','%');
+  if(g){
+    if(VIEW_MODE==='repo'){var u=Object.keys(getAllUDTs()).length,t=Object.keys(PLC_TAGS.tags).length;
+      g.innerHTML=svgGauge('Files',u,100,'#888','ct')+svgGauge('UDTs',UDT_PATHS.length,60,'#888','ct')+svgGauge('Tags',t,20,'#888','ct')+svgGauge('Issues',ALARMS.items.length+t,30,'#888','ct')}
+    else g.innerHTML=svgGauge('OEE',87,100,'#42e898','%')+svgGauge('Avail',92,100,'#38b5f9','%')+svgGauge('Perf',96,100,'#d4a94a','%')+svgGauge('Qual',99,100,'#a080ff','%')}
 
   // Translation layer: automation concept ↔ repo structure
   var tr=document.getElementById('ov-translation');
