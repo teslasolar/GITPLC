@@ -1,0 +1,31 @@
+{
+  "_udt": "Konomioke_VoiceStream",
+  "_schema": "gitplc/equipment/v1",
+  "prime": 3,
+  "desc": "WebRTC audio stream — one per singer per room",
+  "fields": {
+    "peer_id": {
+      "type": "STRING"
+    },
+    "stream_id": {
+      "type": "STRING"
+    },
+    "active": {
+      "type": "BOOL"
+    },
+    "muted": {
+      "type": "BOOL"
+    },
+    "volume_db": {
+      "type": "REAL",
+      "eng_lo": -60,
+      "eng_hi": 0
+    },
+    "latency_ms": {
+      "type": "INT"
+    },
+    "codec": {
+      "type": "STRING"
+    }
+  }
+}
