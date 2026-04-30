@@ -1,9 +1,14 @@
 :root{--bg:#060a12;--c:#0c1018;--c2:#101520;--b:#1a2235;--b2:#243050;--t:#8898b4;--t2:#4a5a78;--ig:#38b5f9;--ok:#42e898;--er:#ff4466;--wr:#f0a030;--gd:#d4a94a;--lav:#a080ff;--shadow:0 2px 12px rgba(0,0,0,.4)}
 *{margin:0;box-sizing:border-box;font-family:'SF Mono','Courier New',monospace}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--t)}
-body{display:grid;grid-template:36px 1fr 24px/1fr;gap:0}
+body{display:grid;grid-template:auto 1fr auto/1fr;gap:0}
 
-/* Header */
+/* North/South docks — SVG rendered */
+#north-dock{background:var(--c);min-height:36px}
+#south-dock{background:#030508;min-height:24px}
+#north-dock svg,#south-dock svg{display:block}
+
+/* Legacy header fallback */
 .hdr{background:linear-gradient(180deg,var(--c2),var(--c));border-bottom:1px solid var(--b);display:flex;align-items:center;padding:0 12px;gap:8px;font-size:9px;box-shadow:var(--shadow)}
 .logo{color:var(--gd);font-weight:700;font-size:12px;letter-spacing:.5px}
 .b{color:var(--b)}

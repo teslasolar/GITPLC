@@ -6,42 +6,31 @@
 <link rel="stylesheet" href="ui/style.css">
 </head>
 <body>
-<div class="hdr">
-  <span class="logo">🔧 GitPLC</span>
-  <span class="b">│</span>
-  <span id="plc-state" style="color:#42e898;font-size:8px">● RUN</span>
-  <span class="b">│</span>
-  <span id="alarm-summary" style="font-size:8px"></span>
-  <span class="b">│</span>
-  <span id="mode-toggle" onclick="toggleMode()" style="cursor:pointer;font-size:8px;padding:2px 8px;border:1px solid var(--b2);border-radius:4px;color:var(--ig);transition:all .15s">🏭 AUTO</span>
-  <span style="flex:1"></span>
-  <span class="tab active" data-tab="overview" onclick="switchView('overview')">🏠</span>
-  <span class="tab" data-tab="explorer" onclick="switchView('explorer')">📂</span>
-  <span class="tab" data-tab="programs" onclick="switchView('programs')">⚙</span>
-  <span class="tab" data-tab="alarms" onclick="switchView('alarms')">🚨</span>
-  <span class="tab" data-tab="kpi" onclick="switchView('kpi')">📊</span>
-  <span class="tab" data-tab="tags" onclick="switchView('tags')">🏷</span>
-  <span class="tab" data-tab="stats" onclick="switchView('stats')">📡</span>
-  <span class="b">│</span>
-  <span id="status" class="ok">boot...</span>
-</div>
+
+<!-- North dock — dynamic SVG header -->
+<div id="north-dock"></div>
+
+<!-- Body: west tree + main + east detail -->
 <div class="dock">
-  <div class="side" id="tree-panel"></div>
+  <div class="side" id="west-dock"></div>
   <div class="main" id="main-panel"></div>
-  <div class="detail" id="detail-panel"></div>
+  <div class="detail" id="east-dock"></div>
 </div>
-<div class="ftr">
-  <div id="heartbeat"></div>
-  <span>🔧 GitPLC · ISA-88/95 · OPC-UA · MQTT</span>
-  <span style="flex:1"></span>
-  <span id="ftr-hb" style="color:var(--t2)"></span>
-  <span style="color:var(--b)">│</span>
-  <span id="ftr-stats"></span>
-</div>
+
+<!-- South dock — dynamic SVG footer -->
+<div id="south-dock"></div>
+
+<!-- assets -->
 <script src="assets/plc-svg.js"></script>
 <script src="assets/gen-badge.js"></script>
+<script src="assets/dock-svg.js"></script>
+<script src="assets/nav-svg.js"></script>
+
+<!-- loaders -->
 <script src="loaders/template-loader.js"></script>
 <script src="loaders/subdir-scanner.js"></script>
+
+<!-- engine -->
 <script src="engine/tag-db.js"></script>
 <script src="engine/udt-loader.js"></script>
 <script src="engine/tree.js"></script>
@@ -51,7 +40,11 @@
 <script src="engine/live-values.js"></script>
 <script src="engine/heartbeat.js"></script>
 <script src="engine/mode-toggle.js"></script>
+
+<!-- ui -->
 <script src="ui/views.js"></script>
 <script src="ui/detail.js"></script>
+
+<!-- boot -->
 <script src="app.js"></script>
 </body></html>
