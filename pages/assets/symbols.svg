@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Kotoba P&ID symbol library · include via <use href="kotoba-symbols.svg#sym-glyph-●"/> -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 600 80" font-family="ui-monospace,Menlo,Consolas,monospace">
+  <defs>
+    <!-- ring 0 · ● KON · vessel -->
+    <symbol id="sym-glyph-●" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#0f1a12" stroke="#4ecd6a" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#4ecd6a">●</text>
+    </symbol>
+    <!-- ring 1 · 〜 OTO · signal -->
+    <symbol id="sym-glyph-〜" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#0f1720" stroke="#4ea3d1" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#4ea3d1">〜</text>
+    </symbol>
+    <!-- ring 2 · ┃ MON · gate -->
+    <symbol id="sym-glyph-┃" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#161a20" stroke="#cdd4de" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#cdd4de">┃</text>
+    </symbol>
+    <!-- ring 3 · ♡ KOKORO · actuator -->
+    <symbol id="sym-glyph-♡" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#1f0f14" stroke="#e07090" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#e07090">♡</text>
+    </symbol>
+    <!-- ring 4 · △ KOTO · controller -->
+    <symbol id="sym-glyph-△" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#1f1a0e" stroke="#d8b84a" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#d8b84a">△</text>
+    </symbol>
+    <!-- ring 5 · ◐ KATA · indicator -->
+    <symbol id="sym-glyph-◐" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#18121f" stroke="#b088d8" stroke-width="1.5"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#b088d8">◐</text>
+    </symbol>
+    <!-- ring 6 · ◯ MA · observer -->
+    <symbol id="sym-glyph-◯" viewBox="-20 -20 40 40" overflow="visible">
+      <circle r="16" fill="#0e1a1a" stroke="#5fd0c6" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <text y="6" font-size="22" text-anchor="middle" fill="#5fd0c6">◯</text>
+    </symbol>
+    <!-- tag bubbles -->
+    <symbol id="sym-tag-local" viewBox="-24 -16 48 32" overflow="visible">
+      <circle r="14" fill="#0a0e12" stroke="#7a8a99" stroke-width="1"/>
+      <line x1="-14" y1="0" x2="14" y2="0" stroke="#7a8a99"/>
+    </symbol>
+    <symbol id="sym-tag-remote" viewBox="-24 -16 48 32" overflow="visible">
+      <circle r="14" fill="#0a0e12" stroke="#7a8a99" stroke-width="1"/>
+      <circle r="10" fill="none" stroke="#7a8a99" stroke-dasharray="3,2"/>
+      <line x1="-14" y1="0" x2="14" y2="0" stroke="#7a8a99"/>
+    </symbol>
+    <symbol id="sym-tag-probe" viewBox="-24 -16 48 32" overflow="visible">
+      <rect x="-14" y="-14" width="28" height="28" fill="#0e1a1a" stroke="#5fd0c6" stroke-dasharray="3,2"/>
+    </symbol>
+  </defs>
+
+  <!-- sample strip for preview -->
+  <rect width="600" height="80" fill="#0a0e12"/>
+  <use xlink:href="#sym-glyph-●"  x="40"  y="40"/>
+  <use xlink:href="#sym-glyph-〜" x="110" y="40"/>
+  <use xlink:href="#sym-glyph-┃"  x="180" y="40"/>
+  <use xlink:href="#sym-glyph-♡"  x="250" y="40"/>
+  <use xlink:href="#sym-glyph-△"  x="320" y="40"/>
+  <use xlink:href="#sym-glyph-◐"  x="390" y="40"/>
+  <use xlink:href="#sym-glyph-◯"  x="460" y="40"/>
+  <use xlink:href="#sym-tag-local"  x="540" y="30"/>
+  <use xlink:href="#sym-tag-probe"  x="540" y="60"/>
+</svg>

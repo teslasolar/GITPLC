@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 720" font-family="Segoe UI, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+    <style>
+      .gw    { fill:#fef3c7; stroke:#b45309; stroke-width:2; }
+      .prov  { fill:#dbeafe; stroke:#1d4ed8; }
+      .dev   { fill:#dcfce7; stroke:#15803d; }
+      .proj  { fill:#fce7f3; stroke:#be185d; }
+      .mod   { fill:#ede9fe; stroke:#6d28d9; }
+      .sess  { fill:#ffe4e6; stroke:#9f1239; }
+      .db    { fill:#e0f2fe; stroke:#0369a1; }
+      .hist  { fill:#fee2e2; stroke:#b91c1c; }
+      .lbl   { font-weight:600; }
+      .sub   { fill:#475569; font-size:11px; }
+      line   { stroke:#444; stroke-width:1.2; marker-end:url(#a); fill:none; }
+    </style>
+  </defs>
+
+  <text x="20" y="28" font-size="18" font-weight="700">Ignition Gateway — Architecture Template</text>
+  <text x="20" y="48" class="sub">Maker 8.3.4 · localhost:8090 · ASSWAY meta vertical</text>
+
+  <rect class="gw" x="430" y="80" width="240" height="80" rx="8"/>
+  <text x="550" y="108" text-anchor="middle" class="lbl">Gateway (process)</text>
+  <text x="550" y="128" text-anchor="middle" class="sub">host:port · edition · version</text>
+  <text x="550" y="146" text-anchor="middle" class="sub">RUNNING · uptime · cpu · heap</text>
+
+  <rect class="prov" x="60"  y="220" width="160" height="60" rx="6"/>
+  <text x="140" y="244" text-anchor="middle" class="lbl">TagProvider: default</text>
+  <text x="140" y="262" text-anchor="middle" class="sub">UDTs · instances · atomics</text>
+
+  <rect class="prov" x="60"  y="300" width="160" height="60" rx="6"/>
+  <text x="140" y="324" text-anchor="middle" class="lbl">TagProvider: system</text>
+  <text x="140" y="342" text-anchor="middle" class="sub">gateway diagnostics</text>
+
+  <rect class="prov" x="60"  y="380" width="160" height="60" rx="6"/>
+  <text x="140" y="404" text-anchor="middle" class="lbl">TagProvider: edge</text>
+  <text x="140" y="422" text-anchor="middle" class="sub">remote / mqtt</text>
+
+  <line x1="430" y1="130" x2="220" y2="250"/>
+  <line x1="430" y1="130" x2="220" y2="330"/>
+  <line x1="430" y1="130" x2="220" y2="410"/>
+
+  <rect class="dev" x="60"  y="480" width="160" height="50" rx="6"/>
+  <text x="140" y="500" text-anchor="middle" class="lbl">Device: PLC_01</text>
+  <text x="140" y="518" text-anchor="middle" class="sub">Allen-Bradley</text>
+
+  <rect class="dev" x="60"  y="540" width="160" height="50" rx="6"/>
+  <text x="140" y="560" text-anchor="middle" class="lbl">Device: PLC_02</text>
+  <text x="140" y="578" text-anchor="middle" class="sub">Modbus-TCP</text>
+
+  <rect class="dev" x="60"  y="600" width="160" height="50" rx="6"/>
+  <text x="140" y="620" text-anchor="middle" class="lbl">Device: OPC_DEMO</text>
+  <text x="140" y="638" text-anchor="middle" class="sub">opc.tcp://…:62541</text>
+
+  <line x1="220" y1="505" x2="60"  y2="430" stroke-dasharray="3,3"/>
+  <line x1="220" y1="565" x2="60"  y2="430" stroke-dasharray="3,3"/>
+  <line x1="220" y1="625" x2="60"  y2="430" stroke-dasharray="3,3"/>
+
+  <rect class="proj" x="430" y="220" width="240" height="50" rx="6"/>
+  <text x="550" y="240" text-anchor="middle" class="lbl">Project: _global (inheritable)</text>
+  <text x="550" y="258" text-anchor="middle" class="sub">parent of all others</text>
+
+  <rect class="proj" x="430" y="290" width="240" height="50" rx="6"/>
+  <text x="550" y="310" text-anchor="middle" class="lbl">Project: water-industry-pack</text>
+  <text x="550" y="328" text-anchor="middle" class="sub">Exchange import</text>
+
+  <rect class="proj" x="430" y="360" width="240" height="50" rx="6"/>
+  <text x="550" y="380" text-anchor="middle" class="lbl">Project: assway_water</text>
+  <text x="550" y="398" text-anchor="middle" class="sub">our generated project</text>
+
+  <rect class="proj" x="430" y="430" width="240" height="50" rx="6"/>
+  <text x="550" y="450" text-anchor="middle" class="lbl">Project: assway_oil_gas</text>
+
+  <rect class="proj" x="430" y="500" width="240" height="50" rx="6"/>
+  <text x="550" y="520" text-anchor="middle" class="lbl">Project: assway_pharma</text>
+
+  <line x1="550" y1="160" x2="550" y2="220"/>
+  <line x1="550" y1="270" x2="550" y2="290"/>
+  <line x1="550" y1="270" x2="550" y2="360"/>
+
+  <rect fill="#fff" stroke="#be185d" stroke-dasharray="4,3" x="700" y="290" width="220" height="200" rx="6"/>
+  <text x="810" y="312" text-anchor="middle" class="lbl">Views (assway_water)</text>
+  <text x="715" y="336" class="sub">• Plant/Overview</text>
+  <text x="715" y="354" class="sub">• Plant/Water</text>
+  <text x="715" y="372" class="sub">• Plant/OilGas</text>
+  <text x="715" y="390" class="sub">• Admin/Status</text>
+  <text x="715" y="408" class="sub">• Admin/Tags</text>
+  <text x="715" y="438" class="sub">root → ia.container.coord</text>
+  <text x="715" y="456" class="sub">tags via [provider]Path/Tag</text>
+
+  <line x1="670" y1="385" x2="700" y2="385"/>
+
+  <rect class="mod" x="940" y="220" width="140" height="40" rx="6"/>
+  <text x="1010" y="245" text-anchor="middle">Perspective 3.3.4</text>
+  <rect class="mod" x="940" y="266" width="140" height="40" rx="6"/>
+  <text x="1010" y="291" text-anchor="middle">OPC-UA 10.3.4</text>
+  <rect class="mod" x="940" y="312" width="140" height="40" rx="6"/>
+  <text x="1010" y="337" text-anchor="middle">SQL Bridge 8.3.4</text>
+  <rect class="mod" x="940" y="358" width="140" height="40" rx="6"/>
+  <text x="1010" y="383" text-anchor="middle">Tag Historian</text>
+  <rect class="mod" x="940" y="404" width="140" height="40" rx="6"/>
+  <text x="1010" y="429" text-anchor="middle">Alarm Notification</text>
+  <rect class="mod" x="940" y="450" width="140" height="40" rx="6"/>
+  <text x="1010" y="475" text-anchor="middle">Reporting</text>
+
+  <line x1="670" y1="120" x2="940" y2="240"/>
+
+  <rect class="db"   x="430" y="600" width="120" height="50" rx="6"/>
+  <text x="490" y="620" text-anchor="middle" class="lbl">DB: historian</text>
+  <text x="490" y="638" text-anchor="middle" class="sub">jdbc:postgresql</text>
+
+  <rect class="db"   x="560" y="600" width="120" height="50" rx="6"/>
+  <text x="620" y="620" text-anchor="middle" class="lbl">DB: alarms</text>
+  <text x="620" y="638" text-anchor="middle" class="sub">jdbc:sqlite</text>
+
+  <rect class="hist" x="700" y="600" width="220" height="50" rx="6"/>
+  <text x="810" y="620" text-anchor="middle" class="lbl">HistorianTarget: Default</text>
+  <text x="810" y="638" text-anchor="middle" class="sub">tag history sink</text>
+
+  <line x1="550" y1="160" x2="550" y2="600"/>
+  <line x1="810" y1="490" x2="810" y2="600" stroke-dasharray="3,3"/>
+
+  <rect class="sess" x="940" y="540" width="140" height="40" rx="6"/>
+  <text x="1010" y="565" text-anchor="middle">Session S0001</text>
+  <rect class="sess" x="940" y="586" width="140" height="40" rx="6"/>
+  <text x="1010" y="611" text-anchor="middle">Session S0002</text>
+  <rect class="sess" x="940" y="632" width="140" height="40" rx="6"/>
+  <text x="1010" y="657" text-anchor="middle">Session S0003</text>
+
+  <line x1="920" y1="385" x2="940" y2="560"/>
+  <line x1="920" y1="385" x2="940" y2="606"/>
+  <line x1="920" y1="385" x2="940" y2="652"/>
+
+  <text x="20" y="700" class="sub">Boxes are UDT instance paths under provider [plant]Ignition/&lt;host&gt;/. Edges are typeId references / runtime relations.</text>
+</svg>

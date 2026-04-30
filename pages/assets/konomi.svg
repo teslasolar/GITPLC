@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<!-- KONOMI icon · 7 prime dots in a circle -->
+<circle cx="32" cy="32" r="30" fill="#0a0a0a" stroke="#252525"/>
+<circle cx="32" cy="6" r="4" fill="#e44"/><text x="32" y="9" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">2</text>
+<circle cx="53" cy="15" r="4" fill="#e84"/><text x="53" y="18" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">3</text>
+<circle cx="58" cy="38" r="4" fill="#ec4"/><text x="58" y="41" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">5</text>
+<circle cx="45" cy="56" r="4" fill="#4c4"/><text x="45" y="59" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">7</text>
+<circle cx="19" cy="56" r="4" fill="#4ce"/><text x="19" y="59" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">11</text>
+<circle cx="6" cy="38" r="4" fill="#48e"/><text x="6" y="41" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">13</text>
+<circle cx="11" cy="15" r="4" fill="#c4e"/><text x="11" y="18" text-anchor="middle" font-family="monospace" font-size="5" fill="#fff">17</text>
+<text x="32" y="36" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#44cc88">K</text>
+</svg>

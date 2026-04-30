@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" font-family="Segoe UI, sans-serif" font-size="12">
+  <defs>
+    <marker id="flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="ctrl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      .pipe    { stroke:#0f172a; stroke-width:3; fill:none; marker-end:url(#flow); }
+      .signal  { stroke:#7c3aed; stroke-width:1.5; stroke-dasharray:5,3; fill:none; marker-end:url(#ctrl); }
+      .vessel  { fill:#fff; stroke:#0f172a; stroke-width:2; }
+      .ctlr    { fill:#fef3c7; stroke:#b45309; stroke-width:1.5; }
+      .tag     { font-family: "Cascadia Mono", monospace; font-size:10px; fill:#7c3aed; }
+      .lbl     { font-weight:600; }
+      .sub     { fill:#475569; font-size:10px; }
+    </style>
+  </defs>
+
+  <text x="20" y="26" font-size="17" font-weight="700">Ignition Data Flow — P&amp;ID-style</text>
+  <text x="20" y="44" class="sub">Field signals → drivers → tags → bindings → views → sessions; with historian + alarm taps.</text>
+
+  <circle class="vessel" cx="80" cy="200" r="32"/>
+  <text x="80" y="196" text-anchor="middle" class="lbl">FT</text>
+  <text x="80" y="212" text-anchor="middle" class="sub">101</text>
+  <text x="80" y="252" text-anchor="middle" class="sub">field sensor</text>
+
+  <rect class="vessel" x="170" y="170" width="120" height="60" rx="4"/>
+  <text x="230" y="195" text-anchor="middle" class="lbl">PLC_01</text>
+  <text x="230" y="213" text-anchor="middle" class="sub">Allen-Bradley</text>
+
+  <line class="pipe" x1="112" y1="200" x2="170" y2="200"/>
+
+  <rect class="vessel" x="330" y="170" width="140" height="60" rx="4"/>
+  <text x="400" y="195" text-anchor="middle" class="lbl">OPC-UA Driver</text>
+  <text x="400" y="213" text-anchor="middle" class="sub">module</text>
+
+  <line class="pipe" x1="290" y1="200" x2="330" y2="200"/>
+
+  <rect class="vessel" x="510" y="170" width="160" height="60" rx="4" fill="#dbeafe"/>
+  <text x="590" y="190" text-anchor="middle" class="lbl">Atomic Tag</text>
+  <text x="590" y="206" text-anchor="middle" class="tag">[default]Plant/Tank01/LT</text>
+  <text x="590" y="222" text-anchor="middle" class="sub">Float8 · scaled · qualified</text>
+
+  <line class="pipe" x1="470" y1="200" x2="510" y2="200"/>
+
+  <rect class="vessel" x="710" y="120" width="180" height="80" rx="6" fill="#fce7f3"/>
+  <text x="800" y="142" text-anchor="middle" class="lbl">UDT Instance</text>
+  <text x="800" y="158" text-anchor="middle" class="tag">[plant]WWTP1/.../LS01</text>
+  <text x="800" y="176" text-anchor="middle" class="sub">typeId = LiftStation</text>
+  <text x="800" y="192" text-anchor="middle" class="sub">params: StationID=LS01</text>
+
+  <line class="pipe" x1="670" y1="190" x2="710" y2="170"/>
+
+  <rect class="vessel" x="710" y="220" width="180" height="80" rx="6" fill="#ede9fe"/>
+  <text x="800" y="242" text-anchor="middle" class="lbl">UDT Type</text>
+  <text x="800" y="258" text-anchor="middle" class="tag">_types/LiftStation</text>
+  <text x="800" y="276" text-anchor="middle" class="sub">members: WetWellFt, FlowGpm…</text>
+  <text x="800" y="292" text-anchor="middle" class="sub">params: StationID</text>
+
+  <line class="signal" x1="800" y1="220" x2="800" y2="200"/>
+
+  <rect class="vessel" x="940" y="120" width="220" height="80" rx="6" fill="#fef3c7"/>
+  <text x="1050" y="142" text-anchor="middle" class="lbl">Perspective View</text>
+  <text x="1050" y="158" text-anchor="middle" class="tag">Plant/Overview</text>
+  <text x="1050" y="176" text-anchor="middle" class="sub">tank · LED · trend bound to tag</text>
+  <text x="1050" y="192" text-anchor="middle" class="sub">root: ia.container.coord</text>
+
+  <line class="pipe" x1="890" y1="160" x2="940" y2="160"/>
+
+  <rect class="vessel" x="940" y="220" width="220" height="60" rx="6" fill="#ffe4e6"/>
+  <text x="1050" y="244" text-anchor="middle" class="lbl">Session (browser)</text>
+  <text x="1050" y="262" text-anchor="middle" class="sub">Perspective Designer / mobile</text>
+
+  <line class="pipe" x1="1050" y1="200" x2="1050" y2="220"/>
+
+  <rect class="vessel" x="510" y="320" width="160" height="50" rx="4" fill="#fee2e2"/>
+  <text x="590" y="340" text-anchor="middle" class="lbl">Historian</text>
+  <text x="590" y="358" text-anchor="middle" class="sub">tag-history sink (DB)</text>
+
+  <line class="signal" x1="590" y1="230" x2="590" y2="320"/>
+
+  <rect class="ctlr" x="710" y="350" width="180" height="60" rx="6"/>
+  <text x="800" y="372" text-anchor="middle" class="lbl">AlarmConfig</text>
+  <text x="800" y="390" text-anchor="middle" class="sub">attached to tag · journal → DB</text>
+  <text x="800" y="406" text-anchor="middle" class="sub">notify pipeline → email/SMS</text>
+
+  <line class="signal" x1="800" y1="300" x2="800" y2="350"/>
+
+  <ellipse class="vessel" cx="450" cy="430" rx="60" ry="22" fill="#e0f2fe"/>
+  <text x="450" y="434" text-anchor="middle" class="lbl">DB</text>
+  <text x="450" y="466" text-anchor="middle" class="sub">historian + alarm journal</text>
+
+  <line class="pipe" x1="510" y1="345" x2="510" y2="430"/>
+  <line class="pipe" x1="710" y1="380" x2="510" y2="430"/>
+
+  <rect class="ctlr" x="940" y="320" width="220" height="60" rx="6"/>
+  <text x="1050" y="342" text-anchor="middle" class="lbl">Gateway Script</text>
+  <text x="1050" y="360" text-anchor="middle" class="sub">tagChangeScript / timer / message</text>
+  <text x="1050" y="376" text-anchor="middle" class="sub">Jython 2.7 (8.1) · Python 3.10 (8.3)</text>
+
+  <line class="signal" x1="940" y1="350" x2="890" y2="380"/>
+  <line class="signal" x1="940" y1="350" x2="670" y2="200"/>
+
+  <line class="pipe"   x1="40"  y1="500" x2="100" y2="500"/>
+  <text x="110" y="504" class="sub">data flow (read/write)</text>
+  <line class="signal" x1="280" y1="500" x2="340" y2="500"/>
+  <text x="350" y="504" class="sub">control / binding / subscription</text>
+  <text x="600" y="504" class="sub">ISA shapes: ○ field instrument · □ logical block · ⬭ datastore</text>
+</svg>

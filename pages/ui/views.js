@@ -12,6 +12,7 @@ function switchView(tab){
     else if(tab==='alarms')_populateAlarms();
     else if(tab==='kpi')_populateKPIs();
     else if(tab==='tags')_populateTags();
+    else if(tab==='stats')_populateStats();
   }).catch(function(){
     // Fallback: render inline
     if(tab==='explorer')renderExplorerInline(main);
@@ -42,5 +43,19 @@ function renderExplorerInline(el){
 function renderTagsInline(el){
   var tags=PLC_TAGS.tags;el.innerHTML='<h3 style="color:var(--gd);font-size:10px">🏷 Tag Database</h3>';
   for(var k in tags)el.innerHTML+='<div class="udt-card"><h3>#'+(tags[k]._issue||'')+' '+k+'</h3><pre>'+JSON.stringify(tags[k],null,1).slice(0,200)+'</pre></div>';
+}
+async function _populateStats(){
+  await fetchRepoStats();
+  renderRepoStats(document.getElementById('repo-stats'));
+  renderLayerBreakdown(document.getElementById('repo-tree'));
+  // Dynamic badges
+  var bEl=document.getElementById('repo-badges');
+  if(bEl)bEl.innerHTML=makeBadge('UDTs',REPO_STATS.udts,'#38b5f9')+makeBadge('tags',REPO_STATS.tags,'#d4a94a')+makeBadge('programs',REPO_STATS.programs,'#42e898')+makeBadge('files',REPO_STATS.files,'#a080ff');
+  // Embed SVG assets
+  var svgEl=document.getElementById('repo-svg');
+  if(svgEl){svgEl.innerHTML='<div style="display:flex;gap:6px;flex-wrap:wrap">';
+    ['topology','dataflow','watchface','konomi'].forEach(function(s){
+      svgEl.innerHTML+='<img src="assets/'+s+'.svg" style="max-width:200px;max-height:120px;border:1px solid #161d2a;border-radius:4px;background:#050810" onerror="this.style.display=\'none\'" title="'+s+'">'});
+    svgEl.innerHTML+='</div>'}
 }
 function stat(v,l,c){return '<div class="stat"><div class="v" style="color:'+c+'">'+v+'</div><div class="l">'+l+'</div></div>'}

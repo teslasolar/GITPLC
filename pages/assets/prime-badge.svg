@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 20">
+<!-- PRIME BADGE · p={n} in a pill -->
+<rect width="50" height="20" rx="4" fill="#141414" stroke="#252525"/>
+<text x="10" y="14" font-family="monospace" font-size="9" fill="#555">p=</text>
+<text x="28" y="14" font-family="monospace" font-size="10" font-weight="bold" fill="#f90">2</text>
+</svg>
