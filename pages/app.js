@@ -13,9 +13,8 @@
     alarmSum.innerHTML=[1,2,3,4].filter(function(p){return c[p]}).map(function(p){
       return '<span style="color:'+PRI_COLOR[p]+'">'+PRI_ICON[p]+c[p]+'</span>'}).join(' ')}
 
-  // Nav tree
-  var dirs=await scanDirs();
-  renderDirNav(dirs,document.getElementById('tree-panel'));
+  // SVG tree with layer icons + repo stats
+  if(typeof renderSVGTree==='function')renderSVGTree(document.getElementById('tree-panel'));
 
   // Apply dynamic index from _index tag (tabs, theme, footer)
   if(typeof applyIndexTag==='function')applyIndexTag();

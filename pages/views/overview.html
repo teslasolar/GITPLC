@@ -1,17 +1,40 @@
 <div id="overview">
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px" id="ov-gauges"></div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;padding:6px;background:#0a0d15;border:1px solid #161d2a;border-radius:4px" id="ov-equipment">
-    <div style="color:#3a4860;font-size:7px">loading equipment...</div>
+  <!-- Gauges -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px" id="ov-gauges"></div>
+
+  <!-- Automation ↔ Repo Translation -->
+  <div class="view-panel" style="margin-bottom:10px">
+    <div class="view-panel-head" style="color:var(--gd)">🔀 Automation ↔ Repo Translation</div>
+    <div id="ov-translation"></div>
   </div>
-  <div style="padding:4px 6px;background:#0a0d15;border:1px solid #161d2a;border-radius:4px;margin-bottom:8px" id="ov-packml"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
-      <div style="font-size:8px;color:#ff4466;margin-bottom:4px;border-bottom:1px solid #161d2a;padding-bottom:2px">🚨 Active Alarms</div>
+
+  <!-- Equipment -->
+  <div class="view-panel" style="margin-bottom:10px">
+    <div class="view-panel-head" style="color:var(--ok)">🏭 Equipment</div>
+    <div id="ov-equipment"></div>
+  </div>
+
+  <!-- PackML -->
+  <div class="view-panel" style="margin-bottom:10px">
+    <div class="view-panel-head" style="color:var(--ig)">◉ PackML State Machine</div>
+    <div id="ov-packml"></div>
+  </div>
+
+  <!-- Alarms + Programs grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div class="view-panel">
+      <div class="view-panel-head" style="color:var(--er)">🚨 Active Alarms</div>
       <div id="ov-alarm-list"></div>
     </div>
-    <div style="background:#0a0d15;border:1px solid #161d2a;border-radius:4px;padding:6px">
-      <div style="font-size:8px;color:#38b5f9;margin-bottom:4px;border-bottom:1px solid #161d2a;padding-bottom:2px">⚙ Programs</div>
+    <div class="view-panel">
+      <div class="view-panel-head" style="color:var(--ig)">⚙ Programs</div>
       <div id="ov-program-list"></div>
     </div>
+  </div>
+
+  <!-- Repo Stats -->
+  <div class="view-panel" style="margin-top:10px">
+    <div class="view-panel-head" style="color:var(--lav)">📡 Repo Heartbeat</div>
+    <div id="ov-repo-stats"></div>
   </div>
 </div>
