@@ -1,0 +1,18 @@
+{
+  "_udt": "Program_AsswayPumps",
+  "_schema": "gitplc/program/v1",
+  "site": "assway",
+  "vendor": "rockwell",
+  "desc": "Pump station lead/lag/standby rotation with VFD speed control",
+  "pumps": [
+    "P001",
+    "P002"
+  ],
+  "mode": "Lead-Lag",
+  "vfd_control": true,
+  "permissives": [
+    "Suction_Press_OK",
+    "Discharge_Valve_Open",
+    "Seal_Water_OK"
+  ]
+}
