@@ -1,0 +1,37 @@
+{
+  "_udt": "Wearass_Wearer",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "role": {
+      "type": "ENUM",
+      "values": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "watch_serial": {
+      "type": "STRING"
+    },
+    "adb_mode": {
+      "type": "ENUM",
+      "values": [
+        "tcp",
+        "tls_mdns",
+        "usb",
+        "offline"
+      ]
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "ONLINE",
+        "SYNCING",
+        "OFFLINE",
+        "CHARGING",
+        "SLEEPING"
+      ]
+    }
+  }
+}
