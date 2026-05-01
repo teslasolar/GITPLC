@@ -1,0 +1,28 @@
+{
+  "_udt": "Wearass_Watch",
+  "fields": {
+    "serial": {
+      "type": "STRING"
+    },
+    "model": {
+      "type": "STRING"
+    },
+    "battery_pct": {
+      "type": "INT"
+    },
+    "temp_c": {
+      "type": "REAL"
+    },
+    "adb_state": {
+      "type": "ENUM",
+      "values": [
+        "connected",
+        "disconnected",
+        "unauthorized"
+      ]
+    },
+    "sensor_count": {
+      "type": "INT"
+    }
+  }
+}
