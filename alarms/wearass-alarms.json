@@ -1,0 +1,45 @@
+{
+  "_udt": "Wearass_Alarms",
+  "alarms": [
+    {
+      "id": "WATCH_OFFLINE",
+      "priority": 2,
+      "trigger": "disconnected > 60s"
+    },
+    {
+      "id": "BATTERY_LOW",
+      "priority": 3,
+      "trigger": "battery < 15%"
+    },
+    {
+      "id": "BATTERY_CRITICAL",
+      "priority": 1,
+      "trigger": "battery < 5%"
+    },
+    {
+      "id": "HR_ANOMALY",
+      "priority": 2,
+      "trigger": "hr < 40 or hr > 180"
+    },
+    {
+      "id": "SPO2_LOW",
+      "priority": 1,
+      "trigger": "spo2 < 90"
+    },
+    {
+      "id": "SENSOR_STALE",
+      "priority": 3,
+      "trigger": "no data > 30s"
+    },
+    {
+      "id": "COMMS_ERROR",
+      "priority": 2,
+      "trigger": "errors > 5/min"
+    },
+    {
+      "id": "APP_CRASH",
+      "priority": 2,
+      "trigger": "megazord not running"
+    }
+  ]
+}
