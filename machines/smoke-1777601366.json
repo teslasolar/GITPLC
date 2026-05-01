@@ -1,0 +1,9 @@
+{
+  "fold": 0,
+  "machine_id": "smoke-1777601366",
+  "prev_state": "LOADING_TAGS",
+  "state": "LOADING_METHODS",
+  "transitions": 2,
+  "type_id": "gateway",
+  "updated_at": "2026-05-01T02:09:26.664232+00:00"
+}
