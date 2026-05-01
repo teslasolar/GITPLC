@@ -1,0 +1,25 @@
+{
+  "_udt": "Wearass_Biomarker",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "value": {
+      "type": "REAL"
+    },
+    "unit": {
+      "type": "STRING"
+    },
+    "source": {
+      "type": "ENUM",
+      "values": [
+        "twrecks",
+        "samsung_health",
+        "computed"
+      ]
+    },
+    "confidence": {
+      "type": "REAL"
+    }
+  }
+}
