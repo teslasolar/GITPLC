@@ -1,0 +1,3 @@
+{"kind": "register", "machine_id": "smoke-1777601366", "meta": {"smoke": true}, "state": "BOOTING", "ts": "2026-05-01T02:09:26.662777+00:00", "type_id": "gateway"}
+{"cause_fold": 0, "from": "BOOTING", "kind": "transition", "machine_id": "smoke-1777601366", "meta": {}, "operator": "", "to": "LOADING_TAGS", "trigger": "smoke-boot", "ts": "2026-05-01T02:09:26.662948+00:00", "type_id": "gateway"}
+{"cause_fold": 0, "from": "LOADING_TAGS", "kind": "transition", "machine_id": "smoke-1777601366", "meta": {}, "operator": "", "to": "LOADING_METHODS", "trigger": "smoke-step", "ts": "2026-05-01T02:09:26.664232+00:00", "type_id": "gateway"}
