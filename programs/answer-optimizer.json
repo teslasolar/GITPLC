@@ -1,0 +1,17 @@
+{
+  "_udt": "Program_AnswerOptimizer",
+  "desc": "Max hourly rate via low-hanging fruit strategy",
+  "rules": [
+    "skip if time>2x avg",
+    "quality floor 0.85",
+    "batch similar topics",
+    "check rate every 10 answers",
+    "rotate platforms every 30min"
+  ],
+  "targets": {
+    "hourly_min": 15,
+    "hourly_target": 25,
+    "quality_min": 0.85,
+    "daily_goal_usd": 50
+  }
+}
