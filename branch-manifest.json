@@ -49,6 +49,14 @@
       "children": [],
       "wearers": ["thomas", "teresa"],
       "extends": ["core/udt", "equipment/*", "alarms/*"]
+    },
+    "plc-survey-auto": {
+      "desc": "Survey/Q&A platform automation — scan, answer, optimize, harvest payouts",
+      "parent": "main",
+      "site": "revenue",
+      "children": [],
+      "platforms": ["1Q","Prolific","SurveyJunkie","Swagbucks","UserTesting","Respondent","JustAnswer","UserInterviews"],
+      "extends": ["equipment/*", "programs/*", "alarms/*"]
     }
   }
 }
