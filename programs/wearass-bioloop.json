@@ -1,0 +1,36 @@
+{
+  "_udt": "Program_WearassBioLoop",
+  "desc": "Sensor → TWrecks → biomarker loop",
+  "loops": [
+    {
+      "name": "L_hr",
+      "input": "heart_rate",
+      "output": "CRA,K",
+      "rate_ms": 1000
+    },
+    {
+      "name": "L_hrv",
+      "input": "hrv",
+      "output": "Mg,Ca",
+      "rate_ms": 5000
+    },
+    {
+      "name": "L_stress",
+      "input": "stress",
+      "output": "cortisol",
+      "rate_ms": 10000
+    },
+    {
+      "name": "L_accel",
+      "input": "accel",
+      "output": "activity",
+      "rate_ms": 200
+    },
+    {
+      "name": "L_spo2",
+      "input": "spo2",
+      "output": "oxygen",
+      "rate_ms": 30000
+    }
+  ]
+}
