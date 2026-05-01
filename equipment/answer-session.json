@@ -1,0 +1,35 @@
+{
+  "_udt": "AnswerSession",
+  "fields": {
+    "platform": {
+      "type": "STRING"
+    },
+    "batch": {
+      "type": "INT"
+    },
+    "earned": {
+      "type": "REAL",
+      "engUnit": "USD"
+    },
+    "time_min": {
+      "type": "REAL"
+    },
+    "hourly": {
+      "type": "REAL",
+      "engUnit": "USD/hr"
+    },
+    "quality": {
+      "type": "REAL"
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "IDLE",
+        "ACTIVE",
+        "PAUSED",
+        "COMPLETED",
+        "CASHED_OUT"
+      ]
+    }
+  }
+}
