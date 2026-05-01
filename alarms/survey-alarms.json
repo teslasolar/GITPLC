@@ -1,0 +1,40 @@
+{
+  "_udt": "SurveyAlarms",
+  "alarms": [
+    {
+      "id": "HIGH_VALUE",
+      "priority": 1,
+      "trigger": "reward>$5 AND easy"
+    },
+    {
+      "id": "RATE_LOW",
+      "priority": 2,
+      "trigger": "hourly<$10 for 30min"
+    },
+    {
+      "id": "PAYOUT_READY",
+      "priority": 3,
+      "trigger": "pending>min_payout"
+    },
+    {
+      "id": "QUALITY_DROP",
+      "priority": 2,
+      "trigger": "quality<0.85"
+    },
+    {
+      "id": "REJECTION_SPIKE",
+      "priority": 1,
+      "trigger": "3+ rejections/hr"
+    },
+    {
+      "id": "DAILY_GOAL",
+      "priority": 4,
+      "trigger": "earned>=daily_goal"
+    },
+    {
+      "id": "PLATFORM_DOWN",
+      "priority": 3,
+      "trigger": "state==BLOCKED"
+    }
+  ]
+}
