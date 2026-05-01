@@ -1,0 +1,66 @@
+{
+  "_udt": "Program_SurveyScanner",
+  "desc": "Scan for high-value low-effort questions",
+  "states": [
+    "IDLE",
+    "SCANNING",
+    "FILTERING",
+    "CLAIMING",
+    "ANSWERING",
+    "SUBMITTING",
+    "COOLDOWN"
+  ],
+  "filters": {
+    "min_hourly": 15,
+    "max_difficulty": "medium",
+    "preferred": [
+      "tech",
+      "science",
+      "general",
+      "opinion",
+      "consumer"
+    ],
+    "skip": [
+      "medical",
+      "legal",
+      "financial"
+    ]
+  },
+  "transitions": [
+    {
+      "from": "IDLE",
+      "to": "SCANNING",
+      "trigger": "tick"
+    },
+    {
+      "from": "SCANNING",
+      "to": "FILTERING",
+      "trigger": "found"
+    },
+    {
+      "from": "FILTERING",
+      "to": "CLAIMING",
+      "trigger": "profitable"
+    },
+    {
+      "from": "CLAIMING",
+      "to": "ANSWERING",
+      "trigger": "claimed"
+    },
+    {
+      "from": "ANSWERING",
+      "to": "SUBMITTING",
+      "trigger": "ready"
+    },
+    {
+      "from": "SUBMITTING",
+      "to": "COOLDOWN",
+      "trigger": "sent"
+    },
+    {
+      "from": "COOLDOWN",
+      "to": "SCANNING",
+      "trigger": "cooldown_done"
+    }
+  ]
+}
