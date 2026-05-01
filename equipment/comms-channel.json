@@ -1,0 +1,33 @@
+{
+  "_udt": "Wearass_CommsChannel",
+  "fields": {
+    "channel_id": {
+      "type": "STRING"
+    },
+    "type": {
+      "type": "ENUM",
+      "values": [
+        "adb_wifi",
+        "adb_tls",
+        "bluetooth",
+        "mqtt"
+      ]
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "IDLE",
+        "CONNECTING",
+        "CONNECTED",
+        "STREAMING",
+        "ERROR"
+      ]
+    },
+    "latency_ms": {
+      "type": "INT"
+    },
+    "error_count": {
+      "type": "INT"
+    }
+  }
+}
