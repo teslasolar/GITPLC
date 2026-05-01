@@ -1,0 +1,53 @@
+{
+  "_udt": "Program_FemtoMiner",
+  "_schema": "gitplc/program/v1",
+  "name": "Femto Miner — Self-Funding PoW",
+  "desc": "Mine before send. Each cycle's hash feeds the next. Ascending entropy chain.",
+  "requires": ["programs/trade-cycle"],
+  "tags": {
+    "MINE.height":      {"type": "DINT", "io": "OUT", "desc": "femto block height"},
+    "MINE.tip":         {"type": "STRING", "io": "OUT", "desc": "latest hash"},
+    "MINE.difficulty":  {"type": "DINT", "io": "HMI", "desc": "leading zeros required"},
+    "MINE.nonce":       {"type": "DINT", "io": "OUT", "desc": "last solution nonce"},
+    "MINE.hashrate":    {"type": "DINT", "io": "OUT", "desc": "hashes/sec"},
+    "MINE.feed_in":     {"type": "STRING", "io": "IN", "desc": "previous cycle feed"},
+    "MINE.feed_out":    {"type": "STRING", "io": "OUT", "desc": "output feed for next cycle"},
+    "MINE.ascent":      {"type": "REAL", "io": "OUT", "desc": "cumulative entropy ascent"},
+    "MINE.elapsed_ms":  {"type": "DINT", "io": "OUT", "desc": "mining time"},
+    "MINE.covers_fee":  {"type": "BOOL", "io": "OUT", "desc": "mining value >= tx fee"},
+    "MINE.total_hashes":{"type": "DINT", "io": "OUT", "desc": "lifetime hash count"},
+    "MINE.total_mined": {"type": "DINT", "io": "OUT", "desc": "blocks mined"}
+  },
+  "rungs": [
+    {
+      "id": "M000",
+      "name": "MINE BEFORE SEND",
+      "contacts": ["GATE.pass", "OR", "GATE.write_oracle"],
+      "function": "FEMTO_MINE(payload, feed_data)",
+      "outputs": ["MINE.hash", "MINE.nonce", "MINE.feed_out", "MINE.ascent"],
+      "comment": "---[ gate pass OR oracle ]---[MINE PoW]---( hash, nonce, feed )--- mine first, send second"
+    },
+    {
+      "id": "M001",
+      "name": "FEE COVERAGE CHECK",
+      "contacts": ["MINE.covers_fee"],
+      "coil": "BSV.send_permit",
+      "comment": "---[ covers_fee ]---( send_permit )--- only send if mining covered the cost"
+    },
+    {
+      "id": "M002",
+      "name": "FEED FORWARD",
+      "contacts": ["BSV.ok"],
+      "outputs": ["MINE.feed_in:=MINE.feed_out"],
+      "comment": "---[ bsv ok ]---{ feed_in := feed_out }--- output feeds next cycle input"
+    },
+    {
+      "id": "M003",
+      "name": "ASCENT ACCUMULATOR",
+      "contacts": ["BSV.ok"],
+      "function": "ADD(MINE.ascent, shannonH(MINE.hash))",
+      "outputs": ["MINE.ascent"],
+      "comment": "---[ ok ]---[ADD entropy]---( ascent++ )--- ascending complexity"
+    }
+  ]
+}

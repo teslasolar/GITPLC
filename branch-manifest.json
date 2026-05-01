@@ -41,6 +41,14 @@
       "children": [],
       "primes": [2, 3, 5, 7, 11, 13, 17],
       "extends": ["core/udt", "equipment/*", "alarms/*"]
+    },
+    "plc-wearass": {
+      "desc": "Galaxy Watch wearable comms — ADB bridge, biosensors, biomarkers, TWrecks kernel",
+      "parent": "main",
+      "site": "blossom",
+      "children": [],
+      "wearers": ["thomas", "teresa"],
+      "extends": ["core/udt", "equipment/*", "alarms/*"]
     }
   }
 }

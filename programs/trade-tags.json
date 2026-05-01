@@ -1,0 +1,58 @@
+{
+  "_udt": "Tags_TradeEngine",
+  "_schema": "gitplc/tags/v1",
+  "name": "Trade Engine Tag Map",
+  "desc": "All tags for the ladder logic trade cycle — inputs, outputs, internals",
+  "tags": {
+    "TRADE.enable":         {"type": "BOOL", "io": "HMI",  "desc": "master enable"},
+    "TRADE.mode":           {"type": "DINT", "io": "HMI",  "desc": "0=MAINT 1=PROD"},
+    "TRADE.state":          {"type": "DINT", "io": "OUT",  "desc": "PackML state"},
+    "TRADE.e_stop":         {"type": "BOOL", "io": "IN",   "desc": "emergency stop"},
+    "TRADE.fault":          {"type": "BOOL", "io": "OUT",  "desc": "active fault"},
+    "TRADE.run_permit":     {"type": "BOOL", "io": "INT",  "desc": "internal permit"},
+    "TRADE.scan_interval":  {"type": "DINT", "io": "HMI",  "desc": "ms between scans"},
+    "TRADE.cost_floor":     {"type": "REAL", "io": "HMI",  "desc": "min profit USD"},
+    "TRADE.max_watts":      {"type": "REAL", "io": "HMI",  "desc": "watt limit"},
+
+    "FEED.cg_btc":          {"type": "REAL", "io": "IN",   "desc": "CoinGecko BTC"},
+    "FEED.cg_bsv":          {"type": "REAL", "io": "IN",   "desc": "CoinGecko BSV"},
+    "FEED.cg_eth":          {"type": "REAL", "io": "IN",   "desc": "CoinGecko ETH"},
+    "FEED.cg_sol":          {"type": "REAL", "io": "IN",   "desc": "CoinGecko SOL"},
+    "FEED.cg_ok":           {"type": "BOOL", "io": "IN",   "desc": "CoinGecko valid"},
+    "FEED.cp_btc":          {"type": "REAL", "io": "IN",   "desc": "CoinPaprika BTC"},
+    "FEED.cp_bsv":          {"type": "REAL", "io": "IN",   "desc": "CoinPaprika BSV"},
+    "FEED.cp_eth":          {"type": "REAL", "io": "IN",   "desc": "CoinPaprika ETH"},
+    "FEED.cp_sol":          {"type": "REAL", "io": "IN",   "desc": "CoinPaprika SOL"},
+    "FEED.cp_ok":           {"type": "BOOL", "io": "IN",   "desc": "CoinPaprika valid"},
+    "FEED.valid":           {"type": "BOOL", "io": "INT",  "desc": "both feeds ok"},
+
+    "SPREAD.btc_pct":       {"type": "REAL", "io": "INT",  "desc": "BTC spread %"},
+    "SPREAD.bsv_pct":       {"type": "REAL", "io": "INT",  "desc": "BSV spread %"},
+    "SPREAD.eth_pct":       {"type": "REAL", "io": "INT",  "desc": "ETH spread %"},
+    "SPREAD.sol_pct":       {"type": "REAL", "io": "INT",  "desc": "SOL spread %"},
+    "SPREAD.best_pct":      {"type": "REAL", "io": "OUT",  "desc": "best spread %"},
+    "SPREAD.best_usd":      {"type": "REAL", "io": "OUT",  "desc": "best spread $"},
+    "SPREAD.best_coin":     {"type": "STRING","io": "OUT",  "desc": "best coin name"},
+
+    "GATE.fee_cost":        {"type": "REAL", "io": "INT",  "desc": "round-trip fee"},
+    "GATE.net_profit":      {"type": "REAL", "io": "OUT",  "desc": "net after fees"},
+    "GATE.pass":            {"type": "BOOL", "io": "OUT",  "desc": "profitability ok"},
+    "GATE.execute_trade":   {"type": "BOOL", "io": "INT",  "desc": "fire trade"},
+    "GATE.dry_run":         {"type": "BOOL", "io": "INT",  "desc": "dry run mode"},
+    "GATE.write_oracle":    {"type": "BOOL", "io": "INT",  "desc": "oracle fallback"},
+
+    "BSV.txid":             {"type": "STRING","io": "OUT",  "desc": "last txid"},
+    "BSV.ok":               {"type": "BOOL", "io": "OUT",  "desc": "broadcast ok"},
+    "BSV.fee_sats":         {"type": "DINT", "io": "CFG",  "desc": "500 sats/tx"},
+    "BSV.balance_sats":     {"type": "DINT", "io": "IN",   "desc": "treasury balance"},
+
+    "WATT.joules":          {"type": "REAL", "io": "OUT",  "desc": "cycle energy"},
+    "WATT.watts_avg":       {"type": "REAL", "io": "OUT",  "desc": "avg power"},
+    "WATT.usd_per_kwh":     {"type": "REAL", "io": "OUT",  "desc": "efficiency"},
+
+    "ACC.cycle_count":      {"type": "DINT", "io": "OUT",  "desc": "total cycles"},
+    "ACC.trade_count":      {"type": "DINT", "io": "OUT",  "desc": "trades executed"},
+    "ACC.total_profit":     {"type": "REAL", "io": "OUT",  "desc": "cumulative profit"},
+    "ACC.total_joules":     {"type": "REAL", "io": "OUT",  "desc": "cumulative energy"}
+  }
+}

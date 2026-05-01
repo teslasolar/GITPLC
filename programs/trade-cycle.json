@@ -1,0 +1,24 @@
+{
+  "_udt": "Program_TradeCycle",
+  "_schema": "gitplc/program/v1",
+  "name": "Trade Cycle — Ladder Logic",
+  "desc": "PackML trade engine in ladder format. Scans prices, detects spreads, gates profitability, anchors to BSV.",
+  "requires": ["equipment/states/packml", "control/analog-in", "control/pid"],
+  "inputs": {
+    "enable": {"type": "BOOL", "desc": "master enable from HMI"},
+    "mode": {"type": "DINT", "desc": "0=MAINTENANCE 1=PRODUCTION"},
+    "scan_interval": {"type": "DINT", "desc": "ms between cycles, 0=adaptive"},
+    "cost_floor": {"type": "REAL", "desc": "min profit USD per trade", "default": 0.0002},
+    "max_watts": {"type": "REAL", "desc": "max avg watts per cycle", "default": 50.0}
+  },
+  "outputs": {
+    "state": {"type": "DINT", "desc": "PackML state enum"},
+    "cycle_count": {"type": "DINT"},
+    "total_profit": {"type": "REAL"},
+    "total_joules": {"type": "REAL"},
+    "last_spread_pct": {"type": "REAL"},
+    "last_txid": {"type": "STRING"},
+    "bsv_ok": {"type": "BOOL"}
+  },
+  "tags": ["trade", "packml", "ladder", "bsv", "profitability"]
+}

@@ -1,0 +1,231 @@
+{
+  "_udt": "Program_TradeRungs",
+  "_schema": "gitplc/program/v1",
+  "name": "Trade Engine — Ladder Rungs",
+  "desc": "IEC 61131-3 ladder logic rungs for the trade cycle",
+  "requires": ["programs/trade-cycle"],
+  "rungs": [
+    {
+      "id": "R000",
+      "name": "MASTER ENABLE",
+      "contacts": ["TRADE.enable", "NOT TRADE.e_stop", "NOT TRADE.fault"],
+      "coil": "TRADE.run_permit",
+      "comment": "---[ enable ]---[/e_stop]---[/fault]---( run_permit )---"
+    },
+    {
+      "id": "R001",
+      "name": "SCAN TIMER",
+      "contacts": ["TRADE.run_permit", "TRADE.state = IDLE"],
+      "timer": {"type": "TON", "preset": "TRADE.scan_interval", "done": "TRADE.scan_trigger"},
+      "comment": "---[ run_permit ]---[ state=IDLE ]---[TON interval]---( scan_trigger )---"
+    },
+    {
+      "id": "R002",
+      "name": "FETCH PRICES",
+      "contacts": ["TRADE.scan_trigger"],
+      "coil": "TRADE.fetch_cmd",
+      "outputs": ["TRADE.state:=STARTING"],
+      "comment": "---[ scan_trigger ]---( fetch_cmd )---{ state:=STARTING }---"
+    },
+    {
+      "id": "R010",
+      "name": "COINGECKO FEED",
+      "contacts": ["TRADE.fetch_cmd"],
+      "function": "HTTP_GET(coingecko_url)",
+      "outputs": ["FEED.cg_btc", "FEED.cg_bsv", "FEED.cg_eth", "FEED.cg_sol", "FEED.cg_ok"],
+      "comment": "---[ fetch_cmd ]---[HTTP_GET]---( cg_btc, cg_bsv, cg_eth, cg_sol )---"
+    },
+    {
+      "id": "R011",
+      "name": "COINPAPRIKA FEED",
+      "contacts": ["TRADE.fetch_cmd"],
+      "function": "HTTP_GET(coinpaprika_url)",
+      "outputs": ["FEED.cp_btc", "FEED.cp_bsv", "FEED.cp_eth", "FEED.cp_sol", "FEED.cp_ok"],
+      "comment": "---[ fetch_cmd ]---[HTTP_GET]---( cp_btc, cp_bsv, cp_eth, cp_sol )---"
+    },
+    {
+      "id": "R012",
+      "name": "FEED VALID",
+      "contacts": ["FEED.cg_ok", "FEED.cp_ok"],
+      "coil": "FEED.valid",
+      "comment": "---[ cg_ok ]---[ cp_ok ]---( FEED.valid )---"
+    },
+    {
+      "id": "R020",
+      "name": "SPREAD CALC — BTC",
+      "contacts": ["feeds_valid"],
+      "function": "SUB(ABS(cg_btc - cp_btc))",
+      "outputs": ["spread_btc_usd:=result", "spread_btc_pct:=result/MIN(cg_btc,cp_btc)*100"],
+      "comment": "---[ feeds_valid ]---[ABS(SUB)]---( spread_btc_usd, spread_btc_pct )---"
+    },
+    {
+      "id": "R021",
+      "name": "SPREAD CALC — BSV",
+      "contacts": ["feeds_valid"],
+      "function": "SUB(ABS(cg_bsv - cp_bsv))",
+      "outputs": ["spread_bsv_usd", "spread_bsv_pct"],
+      "comment": "---[ feeds_valid ]---[ABS(SUB)]---( spread_bsv_usd, spread_bsv_pct )---"
+    },
+    {
+      "id": "R022",
+      "name": "SPREAD CALC — ETH",
+      "contacts": ["feeds_valid"],
+      "function": "SUB(ABS(cg_eth - cp_eth))",
+      "outputs": ["spread_eth_usd", "spread_eth_pct"],
+      "comment": "---[ feeds_valid ]---[ABS(SUB)]---( spread_eth_usd, spread_eth_pct )---"
+    },
+    {
+      "id": "R023",
+      "name": "SPREAD CALC — SOL",
+      "contacts": ["feeds_valid"],
+      "function": "SUB(ABS(cg_sol - cp_sol))",
+      "outputs": ["spread_sol_usd", "spread_sol_pct"],
+      "comment": "---[ feeds_valid ]---[ABS(SUB)]---( spread_sol_usd, spread_sol_pct )---"
+    },
+    {
+      "id": "R030",
+      "name": "BEST SPREAD SELECT",
+      "contacts": ["feeds_valid"],
+      "function": "MAX(spread_btc_pct, spread_bsv_pct, spread_eth_pct, spread_sol_pct)",
+      "outputs": ["best_spread_pct", "best_spread_usd", "best_coin"],
+      "comment": "---[ feeds_valid ]---[MAX SELECT]---( best_spread_pct, best_coin )---"
+    },
+    {
+      "id": "R040",
+      "name": "FEE CALC",
+      "contacts": ["feeds_valid"],
+      "function": "MUL(best_buy_price, 0.002)",
+      "outputs": ["fee_cost"],
+      "comment": "---[ feeds_valid ]---[MUL 0.002]---( fee_cost )---"
+    },
+    {
+      "id": "R041",
+      "name": "NET PROFIT",
+      "contacts": ["feeds_valid"],
+      "function": "SUB(best_spread_usd, fee_cost)",
+      "outputs": ["net_profit_usd"],
+      "comment": "---[ feeds_valid ]---[SUB]---( net_profit_usd )---"
+    },
+    {
+      "id": "R045",
+      "name": "ENTROPY GATE — eRPC",
+      "contacts": ["FEED.valid"],
+      "function": "ERPC_GATE(spreads, prices) → ΔS = E(t) × [1 + α·A(t) − β·|∇S(t)|]",
+      "outputs": ["ENTROPY.dS", "ENTROPY.open", "ENTROPY.shannon", "ENTROPY.tsallis"],
+      "comment": "---[ valid ]---[eRPC ΔS]---( dS, open, H, S₂ )--- entropy-regulated power control"
+    },
+    {
+      "id": "R046",
+      "name": "ENTROPY SIGNAL CHECK",
+      "contacts": ["ENTROPY.open"],
+      "coil": "ENTROPY.signal",
+      "comment": "---[ ENTROPY.open ]---( signal )--- |ΔS| ≥ τ = meaningful price movement"
+    },
+    {
+      "id": "R047",
+      "name": "ENTROPY NOISE SKIP",
+      "contacts": ["NOT ENTROPY.open", "FEED.valid"],
+      "coil": "ENTROPY.skip",
+      "comment": "---[/ENTROPY.open]---[ valid ]---( skip )--- |ΔS| < τ = flat market, save watts"
+    },
+    {
+      "id": "R050",
+      "name": "PROFITABILITY GATE — SCALAR + ENTROPY",
+      "contacts": ["GATE.net_profit > TRADE.cost_floor", "GATE.net_profit > 0", "ENTROPY.open"],
+      "coil": "GATE.pass",
+      "comment": "---[ net>floor ]---[ net>0 ]---[ entropy open ]---( GATE.pass )--- must be profitable AND have entropy signal"
+    },
+    {
+      "id": "R050A",
+      "name": "DYNAMIC FLOOR ADJUST",
+      "contacts": ["FEED.valid"],
+      "function": "SCALE(WATT.joules * 0.000033, 0.0001, 0.01)",
+      "outputs": ["TRADE.cost_floor:=MAX(0.0001, WATT.joules * 0.000005)"],
+      "comment": "---[ valid ]---[SCALE watts→floor]---( cost_floor )--- floor grows with energy cost"
+    },
+    {
+      "id": "R050B",
+      "name": "ROI SCALAR",
+      "contacts": ["GATE.pass"],
+      "function": "DIV(GATE.net_profit, TRADE.cost_floor)",
+      "outputs": ["GATE.roi"],
+      "comment": "---[ pass ]---[DIV]---( GATE.roi )--- ROI multiplier for logging"
+    },
+    {
+      "id": "R051",
+      "name": "PRODUCTION CHECK",
+      "contacts": ["GATE.pass", "TRADE.mode = 1"],
+      "coil": "GATE.execute_trade",
+      "comment": "---[ GATE.pass ]---[ mode=PROD ]---( execute_trade )---"
+    },
+    {
+      "id": "R052",
+      "name": "DRY RUN CHECK",
+      "contacts": ["GATE.pass", "TRADE.mode = 0"],
+      "coil": "GATE.dry_run",
+      "comment": "---[ GATE.pass ]---[ mode=MAINT ]---( dry_run )---"
+    },
+    {
+      "id": "R053",
+      "name": "ORACLE FALLBACK",
+      "contacts": ["NOT GATE.pass", "FEED.valid"],
+      "coil": "GATE.write_oracle",
+      "comment": "---[/GATE.pass]---[ FEED.valid ]---( write_oracle )---"
+    },
+    {
+      "id": "R060",
+      "name": "BSV ANCHOR — TRADE",
+      "contacts": ["GATE.execute_trade"],
+      "function": "BSV_SPEND(trade_payload)",
+      "outputs": ["BSV.txid", "BSV.ok", "TRADE.state:=EXECUTE"],
+      "comment": "---[ execute_trade ]---[BSV_SPEND]---( txid, ok )---{ state:=EXECUTE }---"
+    },
+    {
+      "id": "R061",
+      "name": "BSV ANCHOR — ORACLE",
+      "contacts": ["GATE.write_oracle", "OR", "GATE.dry_run"],
+      "function": "BSV_SPEND(oracle_payload)",
+      "outputs": ["BSV.txid", "BSV.ok"],
+      "comment": "---[ write_oracle OR dry_run ]---[BSV_SPEND]---( txid, ok )---"
+    },
+    {
+      "id": "R070",
+      "name": "WATT METER",
+      "contacts": ["BSV.ok", "OR", "NOT FEED.valid"],
+      "function": "WATT_CALC(cycle_start, NOW, fetch_count)",
+      "outputs": ["WATT.joules", "WATT.watts_avg"],
+      "comment": "---[ cycle_done ]---[WATT_CALC]---( joules, watts )---"
+    },
+    {
+      "id": "R071",
+      "name": "WATT GATE — SCALAR",
+      "contacts": ["WATT.watts_avg > TRADE.max_watts"],
+      "outputs": ["TRADE.scan_interval:=TRADE.scan_interval * 2"],
+      "comment": "---[ watts>max ]---{ interval*=2 }--- dynamic: slows cycle when energy spikes"
+    },
+    {
+      "id": "R080",
+      "name": "PROFIT ACCUMULATOR",
+      "contacts": ["GATE.execute_trade", "BSV.ok"],
+      "function": "ADD(ACC.total_profit, GATE.net_profit)",
+      "outputs": ["ACC.total_profit", "ACC.cycle_count:=ACC.cycle_count+1", "ACC.trade_count:=ACC.trade_count+1"],
+      "comment": "---[ trade+ok ]---[ADD]---( profit++, cycles++, trades++ )---"
+    },
+    {
+      "id": "R090",
+      "name": "ADAPTIVE INTERVAL — SCALAR",
+      "contacts": ["TRADE.run_permit"],
+      "function": "SEL(SPREAD.best_pct>0.2, 15000, SEL(SPREAD.best_pct>0.05, 30000, 60000))",
+      "outputs": ["TRADE.scan_interval"],
+      "comment": "---[ permit ]---[SEL spread→interval]--- dynamic: wider spread = faster scan"
+    },
+    {
+      "id": "R099",
+      "name": "CYCLE COMPLETE",
+      "contacts": ["BSV.ok", "OR", "NOT FEED.valid", "OR", "NOT GATE.pass"],
+      "outputs": ["TRADE.state:=IDLE"],
+      "comment": "---[ done ]---{ state:=IDLE }--- PackML reset"
+    }
+  ],
+  "tags": ["ladder", "rungs", "iec-61131-3", "trade"]
+}
