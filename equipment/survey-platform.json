@@ -1,0 +1,48 @@
+{
+  "_udt": "SurveyPlatform",
+  "fields": {
+    "name": {
+      "type": "STRING"
+    },
+    "url": {
+      "type": "STRING"
+    },
+    "type": {
+      "type": "ENUM",
+      "values": [
+        "survey",
+        "expert",
+        "testing",
+        "micro",
+        "opinion"
+      ]
+    },
+    "pay": {
+      "type": "ENUM",
+      "values": [
+        "paypal",
+        "gift_card",
+        "direct_deposit",
+        "crypto"
+      ]
+    },
+    "avg_hourly": {
+      "type": "REAL",
+      "engUnit": "USD"
+    },
+    "min_payout": {
+      "type": "REAL"
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "IDLE",
+        "SCANNING",
+        "ANSWERING",
+        "SUBMITTED",
+        "PAID",
+        "BLOCKED"
+      ]
+    }
+  }
+}
