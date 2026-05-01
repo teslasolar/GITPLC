@@ -1,0 +1,54 @@
+{
+  "_udt": "Program_PayoutHarvester",
+  "desc": "Auto-collect payouts across platforms",
+  "platforms": [
+    {
+      "name": "1Q",
+      "min": 0,
+      "method": "paypal",
+      "note": "instant $0.25-$0.50 per answer"
+    },
+    {
+      "name": "Prolific",
+      "min": 5,
+      "method": "paypal",
+      "note": "$8-12/hr academic surveys"
+    },
+    {
+      "name": "SurveyJunkie",
+      "min": 5,
+      "method": "paypal",
+      "note": "$1-3 per survey"
+    },
+    {
+      "name": "Swagbucks",
+      "min": 5,
+      "method": "gift_card",
+      "note": "$0.50-5 per survey"
+    },
+    {
+      "name": "UserTesting",
+      "min": 7,
+      "method": "paypal",
+      "note": "$10-60 per test"
+    },
+    {
+      "name": "Respondent",
+      "min": 0,
+      "method": "paypal",
+      "note": "$50-250 per interview"
+    },
+    {
+      "name": "JustAnswer",
+      "min": 20,
+      "method": "direct_deposit",
+      "note": "expert Q&A, $5-50/answer"
+    },
+    {
+      "name": "UserInterviews",
+      "min": 0,
+      "method": "paypal",
+      "note": "$50-200 per session"
+    }
+  ]
+}
