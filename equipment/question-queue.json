@@ -1,0 +1,38 @@
+{
+  "_udt": "QuestionQueue",
+  "fields": {
+    "platform": {
+      "type": "STRING"
+    },
+    "topic": {
+      "type": "STRING"
+    },
+    "difficulty": {
+      "type": "ENUM",
+      "values": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "reward": {
+      "type": "REAL",
+      "engUnit": "USD"
+    },
+    "time_limit": {
+      "type": "INT",
+      "engUnit": "min"
+    },
+    "state": {
+      "type": "ENUM",
+      "values": [
+        "AVAILABLE",
+        "CLAIMED",
+        "ANSWERING",
+        "SUBMITTED",
+        "APPROVED",
+        "REJECTED"
+      ]
+    }
+  }
+}
