@@ -1,0 +1,3 @@
+﻿# Files mirrored from StateDB; humans edit equipment/*.yaml only.
+*.lock
+.DS_Store

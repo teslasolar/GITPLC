@@ -1,0 +1,14 @@
+﻿# equipment/<machine_id>.yaml schema
+#
+# machine_id: gw-1
+# type_id: gateway
+# description: ASS-OS gateway primary instance
+# tags:
+#   - id: HEARTBEAT
+#     kind: status
+#     scan_class: fast
+#   - id: TAG_LOAD_PROGRESS
+#     kind: sensor
+#     hihi: 100
+# operators:
+#   - kappa
