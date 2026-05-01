@@ -21,7 +21,25 @@ alarms/            Open alarm pointers (closed alarms live in issue history only
 - Alarm raise/ack/clear also create commits AND mirror to GitHub Issues with the \plc-alarm\ label.
 - Branch is **orphan** \u2014 \git log plc-state ^main\ shows the full PLC timeline with no docs/code noise.
 
-## Bridge
+## Bridges
 
-Written by \konomi/kernel/engine/state/gitplc.py\ (ASS-OS) on every \StateDB.transition()\.
+Two parity bridges write to this branch on every state transition:
+
+- **Python** — `konomi/kernel/engine/state/gitplc.py` (ASS-OS)
+  Hooks `StateDB.transition()` via `subscribe()`.
+- **JavaScript** — `konomi/github/KCC/onlybrains/api/trade/gitplc.js`
+  Hooks the trade-engine state machine via `subscribe()`.
+
+Both batch events on a flush window, write `machines/<id>.json` (snapshot) +
+append `history/<id>.ndjson` (transitions), and optionally open GH issues
+labeled `plc-alarm` for `abort`/`hold` events.
+
+### Auth
+
+Token resolution chain (both languages):
+1. explicit `opts.token` / `opts.token`
+2. env: `GITPLC_TOKEN` → `GITHUB_TOKEN` → `GH_TOKEN`
+3. `gh auth token` (cached per-process; opt out with `use_gh_cli=False` / `useGhCli: false`)
+4. otherwise the bridge runs in disabled/no-op mode (snapshot still updates locally)
+
 Reads back via the GH webhook \u2192 hydrates equipment/ into TagDB at boot.
