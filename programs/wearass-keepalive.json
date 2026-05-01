@@ -1,0 +1,11 @@
+{
+  "_udt": "Program_WearassKeepalive",
+  "desc": "Heartbeat + reconnect",
+  "heartbeat_ms": 10000,
+  "max_missed": 3,
+  "reconnect_ms": 5000,
+  "port_range": [
+    5555,
+    5585
+  ]
+}
