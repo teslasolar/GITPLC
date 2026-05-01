@@ -1,0 +1,44 @@
+{
+  "_udt": "Program_WearassConnect",
+  "desc": "ADB connection FSM",
+  "states": [
+    "OFFLINE",
+    "DISCOVERING",
+    "CONNECTING",
+    "CONNECTED",
+    "STREAMING",
+    "ERROR"
+  ],
+  "transitions": [
+    {
+      "from": "OFFLINE",
+      "to": "DISCOVERING",
+      "trigger": "scan"
+    },
+    {
+      "from": "DISCOVERING",
+      "to": "CONNECTING",
+      "trigger": "found"
+    },
+    {
+      "from": "CONNECTING",
+      "to": "CONNECTED",
+      "trigger": "authorized"
+    },
+    {
+      "from": "CONNECTED",
+      "to": "STREAMING",
+      "trigger": "subscribe"
+    },
+    {
+      "from": "*",
+      "to": "ERROR",
+      "trigger": "timeout"
+    },
+    {
+      "from": "ERROR",
+      "to": "DISCOVERING",
+      "trigger": "retry"
+    }
+  ]
+}
