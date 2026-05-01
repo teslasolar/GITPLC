@@ -1,0 +1,35 @@
+{
+  "_udt": "Wearass_Biosensor",
+  "fields": {
+    "sensor_id": {
+      "type": "STRING"
+    },
+    "type": {
+      "type": "ENUM",
+      "values": [
+        "hr",
+        "hrv",
+        "spo2",
+        "stress",
+        "accel",
+        "baro",
+        "temp",
+        "steps"
+      ]
+    },
+    "value": {
+      "type": "REAL"
+    },
+    "quality": {
+      "type": "ENUM",
+      "values": [
+        "GOOD",
+        "BAD",
+        "STALE"
+      ]
+    },
+    "sample_rate_ms": {
+      "type": "INT"
+    }
+  }
+}
