@@ -1,0 +1,24 @@
+{
+  "_udt": "PayoutTracker",
+  "fields": {
+    "platform": {
+      "type": "STRING"
+    },
+    "earned": {
+      "type": "REAL",
+      "engUnit": "USD"
+    },
+    "pending": {
+      "type": "REAL"
+    },
+    "paid": {
+      "type": "REAL"
+    },
+    "method": {
+      "type": "STRING"
+    },
+    "next_payout": {
+      "type": "TIME"
+    }
+  }
+}
